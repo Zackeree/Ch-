@@ -4,14 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-
-<<<<<<< HEAD
 import controller.GuessingGameController;
 import model.GuessingGame;
-=======
-import src.controller.GuessingGameController;
-import src.model.GuessingGame;
->>>>>>> refs/remotes/Zackeree/master
+import controller.GuessingGameController;
+import model.GuessingGame;
+
 
 public class GuessingGameControllerTest {
 	private GuessingGame model;
