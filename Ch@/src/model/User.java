@@ -1,8 +1,5 @@
 package model;
 
-import model.Room;
-import model.Profile;
-
 public class User {
 	private String id, password, email;
 	private int infraction;
