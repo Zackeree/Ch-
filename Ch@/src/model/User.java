@@ -79,6 +79,11 @@ public class User {
 		return this.room;
 	}
 	
+	// Not properly implemented
+	public void blockUser(User model) {
+		
+	}
+	
 	/* following methods are NOT properly implemented, and require admin privileges** 
 	public void banUser(User model, int time) {
 		if(this.admin == true)
