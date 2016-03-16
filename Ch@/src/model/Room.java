@@ -9,4 +9,19 @@ public class Room {
 	private boolean privacy_flag;
 	private User owner;
 	
+	public void Purge() {
+		
+	}
+	
+	public void Delete() {
+		
+	}
+	
+	public void Join() {
+		
+	}
+	
+	public void Invite() {
+		
+	}
 }
