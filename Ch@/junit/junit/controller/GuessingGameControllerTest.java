@@ -5,9 +5,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import controller.GuessingGameController;
-import model.GuessingGame;
+import servlet.model.GuessingGame;
 import controller.GuessingGameController;
-import model.GuessingGame;
 
 
 public class GuessingGameControllerTest {

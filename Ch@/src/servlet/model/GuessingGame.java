@@ -1,4 +1,4 @@
-package model;
+package servlet.model;
 
 public class GuessingGame {
 	private int min, max;

@@ -1,4 +1,4 @@
-package controller;
+package servlet.controller;
 
 public class FilterController {
 	public String filterString(String s) {
