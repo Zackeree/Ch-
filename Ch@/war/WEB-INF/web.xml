@@ -11,8 +11,8 @@
     <servlet-class>servlet.IndexServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AddNumbersServlet</servlet-name>
-    <servlet-class>servlet.AddNumbersServlet</servlet-class>
+    <servlet-name>addNumbersServlet</servlet-name>
+    <servlet-class>servlet.addNumbersServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GuessingGameServlet</servlet-name>
@@ -22,11 +22,11 @@
     <servlet-name>FilterServlet</servlet-name>
     <servlet-class>servlet.FilterServlet</servlet-class>
   </servlet>
-  
+
   <!-- AJAX servlets. -->
   <servlet>
-    <servlet-name>AddNumbersAjaxServlet</servlet-name>
-    <servlet-class>servlet.ajax.AddNumbersAjaxServlet</servlet-class>
+    <servlet-name>addNumbersAjaxServlet</servlet-name>
+    <servlet-class>servlet.ajax.addNumbersAjaxServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>NextGuessAjaxServlet</servlet-name>
@@ -34,8 +34,8 @@
     <servlet-class>src.servlet.IndexServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AddNumbersServlet</servlet-name>
-    <servlet-class>src.servlet.AddNumbersServlet</servlet-class>
+    <servlet-name>addNumbersServlet</servlet-name>
+    <servlet-class>src.servlet.addNumbersServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GuessingGameServlet</servlet-name>
@@ -45,11 +45,11 @@
     <servlet-name>FilterAjaxServlet</servlet-name>
     <servlet-class>servlet.ajax.FilterAjaxServlet</servlet-class>
   </servlet>
-  
+
   <!-- AJAX servlets. -->
   <servlet>
-    <servlet-name>AddNumbersAjaxServlet</servlet-name>
-    <servlet-class>src.servlet.ajax.AddNumbersAjaxServlet</servlet-class>
+    <servlet-name>addNumbersAjaxServlet</servlet-name>
+    <servlet-class>src.servlet.ajax.addNumbersAjaxServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>NextGuessAjaxServlet</servlet-name>
@@ -62,7 +62,7 @@
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AddNumbersServlet</servlet-name>
+    <servlet-name>addNumbersServlet</servlet-name>
     <url-pattern>/addNumbers</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -73,10 +73,10 @@
     <servlet-name>FilterServlet</servlet-name>
     <url-pattern>/filter</url-pattern>
   </servlet-mapping>
-  
+
   <!--  AJAX servlet mappings. -->
   <servlet-mapping>
-    <servlet-name>AddNumbersAjaxServlet</servlet-name>
+    <servlet-name>addNumbersAjaxServlet</servlet-name>
     <url-pattern>/ajax/addNumbers</url-pattern>
   </servlet-mapping>
   <servlet-mapping>

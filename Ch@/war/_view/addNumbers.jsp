@@ -24,7 +24,7 @@
 		<form action="${pageContext.servletContext.contextPath}/addNumbers" method="post">
 			<table>
 				<tr>
-					<td class="label">First number:</td>
+					<td class="label">Firstdsnumber:</td>
 					<td><input type="text" name="first" size="12" value="${first}" /></td>
 				</tr>
 				<tr>

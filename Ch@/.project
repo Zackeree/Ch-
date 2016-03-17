@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>war/_view/css/background.jpg</name>
-			<type>1</type>
-			<location>D:/My Files/College/Spring 2016/CS 320/GroupProject/background.jpg</location>
-		</link>
-	</linkedResources>
 </projectDescription>
