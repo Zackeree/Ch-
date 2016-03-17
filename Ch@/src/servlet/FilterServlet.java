@@ -15,7 +15,7 @@ public class FilterServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/addNumbers.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/filter.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -28,6 +28,7 @@ public class FilterServlet extends HttpServlet {
 		try {
 			Double first = getDoubleFromParameter(req.getParameter("first"));
 			Double second = getDoubleFromParameter(req.getParameter("second"));
+			String text = getStringFromParameter(req.getParameter("text"));
 
 			if (first == null || second == null) {
 				errorMessage = "Please specify two numbers";
@@ -42,13 +43,14 @@ public class FilterServlet extends HttpServlet {
 		// Add parameters as request attributes
 		req.setAttribute("first", req.getParameter("first"));
 		req.setAttribute("second", req.getParameter("second"));
+		req.setAttribute("text", req.getParameter("text"));
 		
 		// Add result objects as request attributes
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("result", result);
 		
 		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("/_view/addNumbers.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/filter.jsp").forward(req, resp);
 	}
 
 	private Double getDoubleFromParameter(String s) {
@@ -57,5 +59,12 @@ public class FilterServlet extends HttpServlet {
 		} else {
 			return Double.parseDouble(s);
 		}
+	}
+	
+	private String getStringFromParameter(String s) {
+		if (s == null || s.equals("")) 
+			return null;
+		else
+			return s;
 	}
 }

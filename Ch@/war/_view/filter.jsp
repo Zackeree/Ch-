@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>Add Numbers</title>
+		<title>Filter</title>
 		<style type="text/css">
 		.error {
 			color: red;
@@ -21,7 +21,7 @@
 			<div class="error">${errorMessage}</div>
 		</c:if>
 	
-		<form action="${pageContext.servletContext.contextPath}/addNumbers" method="post">
+		<form action="${pageContext.servletContext.contextPath}/filter" method="post">
 			<table>
 				<tr>
 					<td class="label">First number:</td>
@@ -30,6 +30,10 @@
 				<tr>
 					<td class="label">Second number:</td>
 					<td><input type="text" name="second" size="12" value="${second}" /></td>
+				</tr>
+				<tr>
+					<td class = "label">Text:</td>
+					<td><input type = "text" name="text" size="12" value="${text}" /></td>
 				</tr>
 				<tr>
 					<td class="label">Result:</td>

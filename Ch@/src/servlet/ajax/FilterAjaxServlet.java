@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.AddNumbersController;
+import controller.FilterController;
 
 public class FilterAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private FilterController f = new FilterController();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,9 +30,10 @@ public class FilterAjaxServlet extends HttpServlet {
 		// Get parameters
 		Double first = getDouble(req, "first");
 		Double second = getDouble(req, "second");
+		String text = getString(req, "text");
 		
 		// Check whether parameters are valid
-		if (first == null || second == null) {
+		if (first == null || second == null || text == null) {
 			badRequest("Bad parameters", resp);
 			return;
 		}
@@ -38,6 +41,7 @@ public class FilterAjaxServlet extends HttpServlet {
 		// Use a controller to process the request
 		AddNumbersController controller = new AddNumbersController();
 		Double result = controller.add(first, second);
+		f.filterString(text);
 		
 		// Send back a response
 		resp.setContentType("text/plain");
@@ -54,6 +58,14 @@ public class FilterAjaxServlet extends HttpServlet {
 		} catch (NumberFormatException e) {
 			return null;
 		}
+	}
+	
+	private String getString(HttpServletRequest req, String name) {
+		String val = req.getParameter(name);
+		if (val == null)
+			return null;
+		try { return val;
+		} finally{ return null; }
 	}
 
 	private void badRequest(String message, HttpServletResponse resp) throws IOException {
