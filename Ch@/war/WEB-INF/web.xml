@@ -11,8 +11,8 @@
     <servlet-class>servlet.IndexServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>addNumbersServlet</servlet-name>
-    <servlet-class>servlet.addNumbersServlet</servlet-class>
+    <servlet-name>AddNumbersServlet</servlet-name>
+    <servlet-class>servlet.AddNumbersServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GuessingGameServlet</servlet-name>
@@ -25,8 +25,8 @@
 
   <!-- AJAX servlets. -->
   <servlet>
-    <servlet-name>addNumbersAjaxServlet</servlet-name>
-    <servlet-class>servlet.ajax.addNumbersAjaxServlet</servlet-class>
+    <servlet-name>AddNumbersAjaxServlet</servlet-name>
+    <servlet-class>servlet.ajax.AddNumbersAjaxServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>NextGuessAjaxServlet</servlet-name>
@@ -34,8 +34,8 @@
     <servlet-class>src.servlet.IndexServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>addNumbersServlet</servlet-name>
-    <servlet-class>src.servlet.addNumbersServlet</servlet-class>
+    <servlet-name>AddNumbersServlet</servlet-name>
+    <servlet-class>src.servlet.AddNumbersServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GuessingGameServlet</servlet-name>
@@ -48,8 +48,8 @@
 
   <!-- AJAX servlets. -->
   <servlet>
-    <servlet-name>addNumbersAjaxServlet</servlet-name>
-    <servlet-class>src.servlet.ajax.addNumbersAjaxServlet</servlet-class>
+    <servlet-name>AddNumbersAjaxServlet</servlet-name>
+    <servlet-class>src.servlet.ajax.AddNumbersAjaxServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>NextGuessAjaxServlet</servlet-name>
@@ -62,8 +62,8 @@
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>addNumbersServlet</servlet-name>
-    <url-pattern>/addNumbers</url-pattern>
+    <servlet-name>AddNumbersServlet</servlet-name>
+    <url-pattern>/AddNumbers</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GuessingGameServlet</servlet-name>
@@ -76,8 +76,8 @@
 
   <!--  AJAX servlet mappings. -->
   <servlet-mapping>
-    <servlet-name>addNumbersAjaxServlet</servlet-name>
-    <url-pattern>/ajax/addNumbers</url-pattern>
+    <servlet-name>AddNumbersAjaxServlet</servlet-name>
+    <url-pattern>/ajax/AddNumbers</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>NextGuessAjaxServlet</servlet-name>
