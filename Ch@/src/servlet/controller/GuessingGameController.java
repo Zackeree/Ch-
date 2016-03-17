@@ -1,6 +1,6 @@
 package servlet.controller;
 
-import src.model.GuessingGame;
+import servlet.model.GuessingGame;
 
 /**
  * Controller for the guessing game.
