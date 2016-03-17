@@ -1,4 +1,4 @@
-package src.controller;
+package servlet.controller;
 
 import src.model.GuessingGame;
 

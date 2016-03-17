@@ -1,4 +1,4 @@
-package controller;
+package servlet.controller;
 
 public class AddNumbersController {
 	public Double add(Double first, Double second) {

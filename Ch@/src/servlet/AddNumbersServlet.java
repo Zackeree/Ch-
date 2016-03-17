@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.AddNumbersController;
+import servlet.controller.AddNumbersController;
 
 public class AddNumbersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
