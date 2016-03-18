@@ -33,7 +33,7 @@
 		</div>
 
 		<div id="Content">
-			<center><a href=home>
+			<center><a href="javascript:history.back()">
 			<button class="button button1",>
 			<h2>Return Home</h2>
 			</button>
