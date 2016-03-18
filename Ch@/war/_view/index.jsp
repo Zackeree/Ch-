@@ -17,10 +17,12 @@
 		<div id="Content">
 			<center>
 			<form action="${pageContext.servletContext.contextPath}/Login" method="post">
-			Username: <input type="text" name="id">
+			<p class="custom1">
+			Username: <input type="text" maxlength="20" name="id">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			Password: <input type="password" name="pass"><br>
+			Password: <input type="password" maxlength="20" name="pass"><br>
+			</p>
 			</form>
 			</center>
 		</div>

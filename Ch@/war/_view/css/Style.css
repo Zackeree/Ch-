@@ -84,7 +84,14 @@ input {
     box-shadow: 
       inset 0 0 8px  rgba(0,0,0,0.1),
             0 0 16px rgba(0,0,0,0.1); 
-    padding: 10px;
+    padding: 5px;
+    font-family: Rockwell,"Courier Bold",Courier,Georgia,Times,"Times New Roman",serif;
+   	font-size: 18px;
     background: #D3D3D3;
     margin: 0 0 10px 0;
+}
+
+p.custom1 {
+    font-family: Rockwell,"Courier Bold",Courier,Georgia,Times,"Times New Roman",serif;
+	font-size: 20px;
 }
