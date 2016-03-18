@@ -42,5 +42,11 @@
 			</table>
 			<input type="Submit" name="submit" value="Add Numbers!">
 		</form>
+		<button onclick="goBack()">Go Back</button>
+		<script>
+			function goBack() {
+    		window.history.back();
+			}
+		</script>
 	</body>
 </html>
