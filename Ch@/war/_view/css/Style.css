@@ -57,7 +57,7 @@ body {
 	margin-right: auto;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-    cursor: pointer;
+    cursor:no-drop;
 	border-radius: 12px;
 }
 
