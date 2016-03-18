@@ -16,11 +16,11 @@
 		
 		<div id="Content">
 			<center>
-			<form action="demo_form.asp">
-			Username: <input type="text" name="username">
+			<form action="${pageContext.servletContext.contextPath}/Login" method="post">
+			Username: <input type="text" name="id">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			Password: <input type="password" name="password"><br>
+			Password: <input type="password" name="pass"><br>
 			</form>
 			</center>
 		</div>
@@ -34,7 +34,7 @@
 		</div>
 		
 		<div id="Content">
-			<center><a href="register">
+			<center><a href="login">
 			<button class="button button1">
 			<h2>Register</h2>
 			</button>
