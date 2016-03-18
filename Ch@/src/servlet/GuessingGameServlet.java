@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import servlet.controller.GuessingGameController;
-import src.model.GuessingGame;
+import servlet.model.GuessingGame;
 
 public class GuessingGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
