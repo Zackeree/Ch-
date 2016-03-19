@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.FakeDatabase;
+import model.User;
 
 public class LoginServlet extends HttpServlet {
 	
@@ -22,28 +24,36 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = resp.getWriter();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         
-        String id = req.getParameter("id");
-        String pass = req.getParameter("pass");
+        if(username == null)
+        	username = "";
+        if(password == null)
+        	password = "";
         
-        if(FakeDatabase.validate(db, id, pass))
+        User[] users = new User[3];
+        users[0] = new User("test", "test", "test");
+        users[1] = new User("blonge", "pass", "email");
+        users[2] = new User("zhenry", "pass", "email");
+        
+        boolean validate = false;
+        int userID = 0;
+        
+        for(int i = 0; i < users.length; i++)
         {
-            RequestDispatcher rs = req.getRequestDispatcher("Welcome");
-            rs.forward(req, resp);
-        }
-        else
-        {
-           out.println("Username or Password incorrect");
-           RequestDispatcher rs = req.getRequestDispatcher("index.html");
-           rs.include(req, resp);
+        	if(username.equals(users[i].getID()) && password.equals(users[i].getPassword()))
+        		validate = true; userID = i;
         }
         
-        // Set attributes so login.jsp can fetch them
-        req.setAttribute("id", req.getParameter("id"));
-        req.setAttribute("pass", req.getParameter("pass"));
-    } 
+        if (validate) {
+            request.getSession().setAttribute("user", users[userID]);
+            response.sendRedirect("index");
+        }
+        else {
+            request.setAttribute("error", "Unknown user, please try again");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        }
+    }
 }
