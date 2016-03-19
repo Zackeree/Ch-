@@ -20,23 +20,24 @@
 			<center>
 			<form action="${pageContext.servletContext.contextPath}/login" method="post">
 			<p class="custom1">
+			<span class= "error">${error}</span><br><br>
 			Username: <input type="text" maxlength="20" name="id">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			Password: <input type="password" maxlength="20" name="pass"><br>
-			<input type="submit" value="login">
-			<span class= "error">${error}</span>
 			</p>
-			</form>
 			</center>
 		</div>
 		
 		<div id="Content">
-			<center><a href="login"> 			<!--Should be login-->
-			<button class="button button1">
+			<center><a href="login">
+			<button class="button button1" "type="submit" value="login"> 
+			<!-- not sure if value="login" is needed -->
 			<h2>Submit</h2>
 			</button>
+			</input>
 			</a></center>
+			</form>
 		</div>
 		
 		<div id="Content">
@@ -48,7 +49,7 @@
 		</div>
 		
 		<div id="Content">
-			<center><a href="javascript:history.back()">
+			<center><a href="/home/">
 			<button class="button button1",>
 			<h2>Return Home</h2>
 			</button>
