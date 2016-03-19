@@ -20,10 +20,10 @@
 			<center>
 			<form action="${pageContext.servletContext.contextPath}/Login" method="post">
 			<p class="custom1">
-			Username: <input type="text" maxlength="20" name="id">
+			Username: <input type="text" maxlength="20" name="id" value="${id}">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			Password: <input type="password" maxlength="20" name="pass"><br>
+			Password: <input type="password" maxlength="20" name="pass" value="${pass}"><br>
 			</p>
 			</form>
 			</center>
@@ -32,7 +32,7 @@
 		<div id="Content">
 			<center><a href="login"> 			<!--Should be login-->
 			<button class="button button1">
-			<h2>Login</h2>
+			<h2>Submit</h2>
 			</button>
 			</a></center>
 		</div>
