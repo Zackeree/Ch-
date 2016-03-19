@@ -25,8 +25,8 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("id");
+        String password = request.getParameter("pass");
         
         if(username == null)
         	username = "";
@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
         }
         else {
             request.setAttribute("error", "Unknown user, please try again");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         }
     }
 }
