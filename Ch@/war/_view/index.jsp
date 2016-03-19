@@ -3,7 +3,7 @@
 
 <html>
 	<head>
-		<title>Login</title>
+		<title>Register</title>
 		<link href="_view/css/Style.css" rel="stylesheet" type="text/css">
 
 	</head>
@@ -11,7 +11,7 @@
 	<body>
 	<span style="cursor:help">
 		<div id="Title">
-			<h1><center>Login or Create an Account:</center></h1>
+			<h1><center>Register an Account:</center></h1>
 		</div>
 		
 		<div id="Content">
@@ -30,23 +30,15 @@
 		<div id="Content">
 			<center><a href="index"> 			<!--Should be login-->
 			<button class="button button1">
-			<h2>Login</h2>
-			</button>
-			</a></center>
-		</div>
-		
-		<div id="Content">
-			<center><a href="login">
-			<button class="button button1">
-			<h2>Register</h2>
+			<h2>Sign Up!</h2>
 			</button>
 			</a></center>
 		</div>
 		
 		<div id="Content">
 			<center><a href="javascript:history.back()">
-			<button class="button button1",>
-			<h2>Return Home</h2>
+			<button class="button button1">
+			<h2>Go Back!</h2>
 			</button>
 			</a></center>
 		</div>

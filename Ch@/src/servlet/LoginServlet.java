@@ -15,6 +15,13 @@ public class LoginServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
 	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+	}
+	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
