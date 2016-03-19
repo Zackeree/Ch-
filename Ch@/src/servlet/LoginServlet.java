@@ -22,24 +22,28 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        resp.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = resp.getWriter();
         
-        String id = request.getParameter("id");
-        String pass = request.getParameter("pass");
+        String id = req.getParameter("id");
+        String pass = req.getParameter("pass");
         
         if(FakeDatabase.validate(db, id, pass))
         {
-            RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-            rs.forward(request, response);
+            RequestDispatcher rs = req.getRequestDispatcher("Welcome");
+            rs.forward(req, resp);
         }
         else
         {
            out.println("Username or Password incorrect");
-           RequestDispatcher rs = request.getRequestDispatcher("index.html");
-           rs.include(request, response);
+           RequestDispatcher rs = req.getRequestDispatcher("index.html");
+           rs.include(req, resp);
         }
+        
+        // Set attributes so login.jsp can fetch them
+        req.setAttribute("id", req.getParameter("id"));
+        req.setAttribute("pass", req.getParameter("pass"));
     } 
 }
