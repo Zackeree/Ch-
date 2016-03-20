@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import model.FakeDatabase;
 import model.User;
 
-public class LoginServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/register.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -49,12 +49,11 @@ public class LoginServlet extends HttpServlet {
         
         if (validate) {
             request.getSession().setAttribute("user", users[userID]);
-            response.sendRedirect("index");
-            request.setAttribute("error", "Welcome"+"he");
+            response.sendRedirect("register");
         }
         else {
-            request.setAttribute("error", "Unknown user, please try again");
-            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
+            request.setAttribute("error", "Terrible username, please be creative!");
+            request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
         }
     }
 }

@@ -5,7 +5,7 @@
 
 <html>
 	<head>
-		<title>Login</title>
+		<title>Register</title>
 		<link href="_view/css/Style.css" rel="stylesheet" type="text/css">
 
 	</head>
@@ -13,12 +13,12 @@
 	<body>
 	<span style="cursor:help">
 		<div id="Title">
-			<h1><center>Login or Create an Account:</center></h1>
+			<h1><center>Register for an Account:</center></h1>
 		</div>
 		
 		<div id="Content">
 			<center>
-			<form action="${pageContext.servletContext.contextPath}/login" method="post">
+			<form action="${pageContext.servletContext.contextPath}/register" method="post">
 			<p class="custom1">
 			<span class="error">${error}</span><br><br>
 			Username: <input type="text" maxlength="20" name="id">
@@ -36,14 +36,6 @@
 			</button>
 			</center>
 			</form>
-		</div>
-		
-		<div id="Content">
-			<center><a href="register">
-			<button class="button button1">
-			<h2>Register</h2>
-			</button>
-			</a></center>
 		</div>
 		
 		<div id="Content">
