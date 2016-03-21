@@ -13,7 +13,7 @@
 	<body>
 	<span style="cursor:help">
 		<div id="Title">
-			<h1><center>Login or Create an Account:</center></h1>
+			<h1><center>Login to your Account:</center></h1>
 		</div>
 		
 		<div id="Content">

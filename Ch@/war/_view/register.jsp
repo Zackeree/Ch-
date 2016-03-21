@@ -7,7 +7,7 @@
 	<head>
 		<title>Register</title>
 		<link href="_view/css/Style.css" rel="stylesheet" type="text/css">
-
+		
 	</head>
 	
 	<body>
@@ -24,7 +24,12 @@
 			Username: <input type="text" maxlength="20" name="id">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			Password: <input type="password" maxlength="20" name="pass"><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;
+			Password: <input type="text" maxlength="20" name="pass"><br>
+			Email: <input type="text" maxlength="20" name="email">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Re-Enter Password: <input type="text" maxlength="20" name="pass2"><br>
 			</p>
 			</center>
 		</div>

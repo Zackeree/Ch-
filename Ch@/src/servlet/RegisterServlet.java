@@ -27,6 +27,8 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("id");
         String password = request.getParameter("pass");
+        String password2 = request.getParameter("pass2");
+        String email = request.getParameter("email");
         
         if(username == null)
         	username = "";
@@ -49,11 +51,11 @@ public class RegisterServlet extends HttpServlet {
         
         if (validate) {
             request.getSession().setAttribute("user", users[userID]);
-            response.sendRedirect("register");
+            response.sendRedirect("index");
         }
         else {
-            request.setAttribute("error", "Terrible username, please be creative!");
+            request.setAttribute("error", "Terrible username! Please be more creative");
             request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
         }
-    }
+	}
 }
