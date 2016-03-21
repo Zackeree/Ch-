@@ -16,8 +16,11 @@ import model.User;
 public class LoginServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
+	User[] users = new User[3];
+	boolean validate = false;
+    int userID = 0;
 	
-	@Override
+    @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
@@ -33,13 +36,12 @@ public class LoginServlet extends HttpServlet {
         if(password == null)
         	password = "";
         
-        User[] users = new User[3];
+        
         users[0] = new User("test", "test", "test");
         users[1] = new User("blonge", "pass", "email");
         users[2] = new User("zhenry", "pass", "email");
         
-        boolean validate = false;
-        int userID = 0;
+        
         
         for(int i = 0; i < users.length; i++)
         {
@@ -57,4 +59,8 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         }
     }
+	
+	User getUser() {
+		return users[userID];
+	}
 }

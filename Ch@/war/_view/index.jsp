@@ -18,7 +18,8 @@
 		
 		<div id="Content">
 			<center>
-			
+			<form action="${pageContext.servletContext.contextPath}/index" method="get">
+			${user}
 			</span>
 			</center>
 		</div>
