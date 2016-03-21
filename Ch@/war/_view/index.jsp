@@ -3,7 +3,7 @@
 
 <html>
 	<head>
-		<title>Register</title>
+		<title>Logged In!</title>
 		<link href="_view/css/Style.css" rel="stylesheet" type="text/css">
 
 	</head>
@@ -21,11 +21,12 @@
 			<form action="${pageContext.servletContext.contextPath}/index" method="get">
 			${user}
 			</span>
+			</form>
 			</center>
 		</div>
 		
 		<div id="Content">
-			<center><a href="index"> 			<!--Should be login-->
+			<center><a href="index">
 			<button class="button button1">
 			<h2>Join a Room!</h2>
 			</button>
