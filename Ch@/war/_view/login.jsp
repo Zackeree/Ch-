@@ -7,7 +7,9 @@
 	<head>
 		<title>Login</title>
 		<link href="_view/css/Style.css" rel="stylesheet" type="text/css">
-
+		<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+		<script type="text/javascript" src="_view/script.js"></script>
+		
 	</head>
 	
 	<body>
@@ -21,10 +23,10 @@
 			<form action="${pageContext.servletContext.contextPath}/login" method="post">
 			<p class="custom1">
 			<span class="error">${error}</span><br><br>
-			Username: <input type="text" maxlength="20" name="id">
+			Username: <input type="text" maxlength="20" name="id" class="removespace">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			Password: <input type="password" maxlength="20" name="pass"><br>
+			Password: <input type="password" maxlength="20" name="pass" class="removespace"><br>
 			</p>
 			</center>
 		</div>
