@@ -12,7 +12,7 @@
 	<span style="cursor:help">
 		<div id="Title">
 			<h1><center>
-			Your have successfully logged in!
+			You have successfully logged in!
 			</center></h1>
 		</div>
 		
