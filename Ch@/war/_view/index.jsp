@@ -12,13 +12,14 @@
 	<span style="cursor:help">
 		<div id="Title">
 			<h1><center>
-			Your have successfully logged in!
+			You have successfully logged in!
 			</center></h1>
 		</div>
 		
 		<div id="Content">
 			<center>
-			
+			<form action="${pageContext.servletContext.contextPath}/index" method="get">
+			${user}
 			</span>
 			</center>
 		</div>
