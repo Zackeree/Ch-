@@ -1,5 +1,16 @@
 /* Styles go here */
 
+.alignleft {
+	float: left;
+}
+.aligncenter {
+	margin: auto;
+}
+.align right {
+	float: right;
+}
+
+
 body {
 
     background-color: #66ccff;

@@ -52,7 +52,6 @@ public class LoginServlet extends HttpServlet {
         if (validate) {
             request.getSession().setAttribute("user", users[userID]);
             response.sendRedirect("index");
-            request.setAttribute("error", "Welcome"+"he");
         }
         else {
             request.setAttribute("error", "Unknown user, please try again");
