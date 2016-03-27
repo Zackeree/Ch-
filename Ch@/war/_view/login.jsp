@@ -7,7 +7,7 @@
 	<head>
 		<title>Login</title>
 		<link href="_view/css/Style.css" rel="stylesheet" type="text/css">
-		<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
 		<script type="text/javascript" src="_view/js/script.js"></script>
 		
 	</head>

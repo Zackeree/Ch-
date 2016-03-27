@@ -4,15 +4,18 @@
 	<head>
 		<title>Chat Away!</title>
 		<link rel='stylesheet' type='text/css' href='_view/css/RoomStyle.css'/>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'/>
-		
+
 	</head>
 
 	<body>
 	<center>
+	<div id="Title">
+	<h1><center>You Have Successfully Joined a Room</center></h1>
+	</div>
+	<div id="Content">
 	<div class='chatContainer'>
 		<div class='chatHeader'>
-			<h3>Welcome</h3> <!-- Display users name/chat rooms name here -->
+			<h3>Welcome, Chat Away!</h3> <!-- Display users name/chat rooms name here -->
 		</div>
 		<div class='chatMessages'></div>
 		<div class='chatBottom'>
@@ -22,6 +25,10 @@
 				<input type='submit' name='submit' value='Post' />
 			</form>
 		</div>
+	</div>
+	</div>
+	<div id="Credits">
+	<h5><center>Created by: Brandon Longenecker and Zackeree Henry</center></h5>
 	</div>
 	</center>
 	</body>
