@@ -26,7 +26,7 @@
 		</div>
 		
 		<div id="Content">
-			<center><a href="index">
+			<center><a href="rooms">
 			<button class="button button1">
 			<h2>Join a Room!</h2>
 			</button>

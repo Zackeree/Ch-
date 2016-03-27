@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<title>Chat Away!</title>
-		<link rel='stylesheet' type='text/css' href='css/RoomStyle.css'/>
+		<link rel='stylesheet' type='text/css' href='_view/css/RoomStyle.css'/>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'/>
 		
 	</head>
