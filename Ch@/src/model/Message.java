@@ -5,4 +5,10 @@ public class Message {
 	private int length;
 	private long time;
 
+	
+	public boolean ValidMessage(String text) {
+		
+		
+		return true;
+	}
 }
