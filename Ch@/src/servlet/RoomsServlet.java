@@ -17,4 +17,10 @@ public class RoomsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		req.getRequestDispatcher("/_view/rooms.jsp").forward(req, resp);
 	}
+    
+    @Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+
+    }
 }

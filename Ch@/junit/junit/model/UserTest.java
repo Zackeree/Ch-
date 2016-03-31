@@ -12,13 +12,21 @@ public class UserTest {
 	@Before
 	public void setUp() {
 		model = new User("name","pass","testworks@maybe.not");
-		
 	}
 	
 	@Test
-	public void testSetID() {
-		model.setID("namechanged");
-		assertEquals("namechanged", model.getID());
+	public void testGetID() {
+		assertEquals("name", model.getID());
+	}
+	
+	@Test
+	public void testGetPassword() {
+		assertEquals("pass", model.getPassword());
+	}
+
+	@Test
+	public void testGetEmail() {
+		assertEquals("testworks@maybe.not", model.getEmail());
 	}
 	
 	// ADD MORE TEST CASES TO THIS

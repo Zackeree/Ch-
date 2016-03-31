@@ -12,7 +12,7 @@ public class FakeDatabase {
 		userList.add(new User("Zack", "allimager", "ceo@google.com"));
 	}
 	
-	public static boolean validate(FakeDatabase db,String user, String password) {
+	public boolean validate(FakeDatabase db,String user, String password) {
 		if(db.userList.contains(user)) {
 			if(db.userList.contains(password)) {
 				if(db.userList.indexOf(user) == db.userList.indexOf(password))

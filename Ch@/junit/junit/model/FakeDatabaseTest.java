@@ -9,6 +9,7 @@ import model.FakeDatabase;
 
 public class FakeDatabaseTest {
 	private FakeDatabase model;
+	
 	@Before
 	public void setUp() {
 		model = new FakeDatabase();
@@ -17,9 +18,10 @@ public class FakeDatabaseTest {
 	
 	@Test
 	public void testValidate() {
-		
+		assertTrue(model.validate(model, "test", "yes"));
 	}
-
+	
+	
 	// ADD MORE TEST CASES TO THIS
 	
 }

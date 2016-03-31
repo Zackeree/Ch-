@@ -4,9 +4,9 @@
 	<head>
 		<title>Chat Away!</title>
 		<link rel='stylesheet' type='text/css' href='_view/css/RoomStyle.css'/>
-
+	
 	</head>
-
+	
 	<body>
 	<center>
 	<div id="Title">
@@ -19,7 +19,7 @@
 		</div>
 		<div class='chatMessages'></div>
 		<div class='chatBottom'>
-			<form action='#' onSubmit='return false;' id='chatForm'>
+			<form action="${pageContext.servletContext.contextPath}/rooms" onSubmit='return false;' id='chatForm'>
 				<input type='hidden' id='name'/>
 				<input type='text' name='text' id='text' value='' placeholder='type your chat message' />
 				<input type='submit' name='submit' value='Post' />
