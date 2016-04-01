@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.FakeDatabase;
+import database.FakeDatabase;
 import model.User;
 
 public class RegisterServlet extends HttpServlet {
