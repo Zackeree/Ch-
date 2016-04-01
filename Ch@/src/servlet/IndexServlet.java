@@ -19,11 +19,11 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String username = req.getParameter("id");
 		
 		System.out.println("In the Index servlet");
 		
-		//User user = ls.getUser();
-		
+		req.setAttribute("user", username);
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		
 	}

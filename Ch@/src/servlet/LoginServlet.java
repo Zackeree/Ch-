@@ -16,7 +16,7 @@ import model.User;
 public class LoginServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
-	
+	String id;
 	
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -29,10 +29,12 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("id");
         String password = request.getParameter("pass");
         
+        id = username;
+        
         if (db.retrieveUser(username) != null) {
 	        User user = db.retrieveUser(username);
 	        if (db.validate(user.getID(), password)){
-	        	request.getSession().setAttribute("user", user);
+	        	request.getSession().setAttribute("id", user.getID());
 	            response.sendRedirect("index");
 	        }
 	        else { 

@@ -21,9 +21,10 @@
 			<h3>Welcome, Chat Away!</h3> <!-- Display users name/chat rooms name here -->
 		</div>
 		<div class='chatMessages'></div>
+		<span class="messages">${messages}</span><br><br>
 		<div class='chatBottom'>
-			<form action="${pageContext.servletContext.contextPath}/rooms" onSubmit='return false;' id='chatForm'>
-				<input type='hidden' id='name'/>
+			<form action="${pageContext.servletContext.contextPath}/rooms" method='post'>
+				<s:iterator value='messages'/><s:property /></s:iterator>
 				<input type='text' name='text' id='text' value='' placeholder='type your chat message' />
 				<input type='submit' name='submit' value='Post' />
 			</form>

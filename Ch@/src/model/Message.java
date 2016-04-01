@@ -10,10 +10,13 @@ public class Message {
 	private int length;
 	private long time;
 	
+	public Message(String text) {
+		this.text = text;
+	}
 	
-	public String ValidateMessage(String text) {
+	public String ValidateMessage() {
 		
-		text = text.toLowerCase().replaceAll("damn", "****");
+		this.text = this.text.toLowerCase().replaceAll("damn", "****");
 		
 		return text;
 	}

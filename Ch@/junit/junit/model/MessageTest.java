@@ -14,22 +14,19 @@ public class MessageTest {
 	private Message model;
 	@Before
 	public void setUp() {
-		model = new Message();
-		
+		model = new Message("asddamnfe");
 	}
 	
 	@Test
 	public void testValidMessage() {
-		assertEquals("asd****fe", model.ValidateMessage("asddamnfe"));
 		
+		assertEquals("asd****fe", model.ValidateMessage());
 	}
 	
 	@Test
 	public void testGetTime() {
-		Date now = new Date();
-		String time = new SimpleDateFormat("h:mm:ss a").format(now);
-
-		System.out.println(time);
+		
+		System.out.println(model.GetTime());
 	}
 	
 	// ADD MORE TEST CASES TO THIS

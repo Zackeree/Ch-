@@ -3,15 +3,22 @@ package database;
 import java.util.ArrayList;
 
 import model.User;
+import model.Message;
 
 public class FakeDatabase implements IDatabase {
 	private ArrayList<User> userList = new ArrayList<User>();
+	private ArrayList<String> messageList = new ArrayList();
 	
 	// Default FakeDatabase constructor
 	public FakeDatabase() {
 		userList.add(new User("test", "yes", "email@email.com"));
 		userList.add(new User("Brandon", "sqrt", "blonge@chatroom.gov"));
 		userList.add(new User("Zack", "allimager", "ceo@google.com"));
+		
+		messageList.add("hellow");
+		messageList.add("Do you like spam?");
+		messageList.add("No, go away!");
+		
 	}
 	
 	public boolean validate(String id, String password) {
@@ -56,6 +63,20 @@ public class FakeDatabase implements IDatabase {
 			if (u.getID().equals(id)) {
 				// Need User method to delete an account (u.remove();)
 			}
+		}
+	}
+	
+	@Override
+	public ArrayList retrieveMessages() {
+		
+		return messageList;
+	}
+	
+	public void addMessage(String text) {
+		
+		if (text.isEmpty() == false) {
+			
+			messageList.add(text);
 		}
 	}
 }

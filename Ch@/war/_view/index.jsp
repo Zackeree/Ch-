@@ -19,8 +19,7 @@
 		<div id="Content">
 			<center>
 			<form action="${pageContext.servletContext.contextPath}/index" method="get">
-			${user}
-			</span>
+			<span class="user">${user}</span>
 			</form>
 			</center>
 		</div>
