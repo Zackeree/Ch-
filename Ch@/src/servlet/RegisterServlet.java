@@ -29,33 +29,32 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("pass");
         String password2 = request.getParameter("pass2");
         String email = request.getParameter("email");
-        
-        if(username == null)
-        	username = "";
-        if(password == null)
-        	password = "";
-        
-        User[] users = new User[3];
-        users[0] = new User("test", "test", "test");
-        users[1] = new User("blonge", "pass", "email");
-        users[2] = new User("zhenry", "pass", "email");
-        
-        boolean validate = false;
-        int userID = 0;
-        
-        for(int i = 0; i < users.length; i++)
-        {
-        	if(username.equals(users[i].getID()) && password.equals(users[i].getPassword()))
-        		validate = true; userID = i;
-        }
-        
-        if (validate) {
-            request.getSession().setAttribute("user", users[userID]);
-            response.sendRedirect("index");
+ 
+        System.out.println("username: " + username);
+        System.out.println("password: " + password);
+        System.out.println("password2: " + password2);
+        System.out.println("email: " + email);
+        if (username.isEmpty() == false && password.isEmpty() == false && email.isEmpty() == false) {
+        	if (db.retrieveUser(username) == null) {
+        		if (password.equals(password2)) {
+        			
+        			db.createUser(username, password, email); 
+        			response.sendRedirect("index");
+        		
+        		}
+        		else {
+        			request.setAttribute("error", "Passwords do not match!");
+        			request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
+        		}
+        	}
+        	else {
+        		request.setAttribute("error", "Username already taken!");
+        		request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
+        	}
         }
         else {
-            request.setAttribute("error", "Terrible username! Please be more creative");
-            request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
+        	request.setAttribute("error", "One or more fields is empty!");
+    		request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
         }
 	}
 }

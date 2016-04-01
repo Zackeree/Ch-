@@ -22,10 +22,9 @@ public class IndexServlet extends HttpServlet {
 		
 		System.out.println("In the Index servlet");
 		
-		User user = ls.getUser();
+		//User user = ls.getUser();
 		
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		
-		req.setAttribute("user", user);
 	}
 }

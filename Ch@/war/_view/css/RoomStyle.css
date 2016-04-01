@@ -44,6 +44,35 @@ body {
 	
 }
 
+.button {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 16px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	width: 325px;
+    font-size: 16px;
+    margin-left:auto;
+	margin-right: auto;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor:no-drop;
+	border-radius: 12px;
+}
+
+.button1 {
+    background-color: #cc99ff;
+    color: black;
+    border: 3px solid black;
+}
+
+.button1:hover {
+    background-color: #3399ff;
+    color: white;
+}
+
 .chatContainer {
 	width: 600px;
 	height: 560px;

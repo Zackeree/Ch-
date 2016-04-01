@@ -16,9 +16,7 @@ import model.User;
 public class LoginServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
-	User[] users = new User[3];
-	boolean validate = false;
-    int userID = 0;
+	
 	
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -31,35 +29,20 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("id");
         String password = request.getParameter("pass");
         
-        if(username == null)
-        	username = "";
-        if(password == null)
-        	password = "";
-        
-        
-        users[0] = new User("test", "test", "test");
-        users[1] = new User("blonge", "pass", "email");
-        users[2] = new User("zhenry", "pass", "email");
-        
-        
-        
-        for(int i = 0; i < users.length; i++)
-        {
-        	if(username.equals(users[i].getID()) && password.equals(users[i].getPassword()))
-        		validate = true; userID = i;
-        }
-        
-        if (validate) {
-            request.getSession().setAttribute("user", users[userID]);
-            response.sendRedirect("index");
+        if (db.retrieveUser(username) != null) {
+	        User user = db.retrieveUser(username);
+	        if (db.validate(user.getID(), password)){
+	        	request.getSession().setAttribute("user", user);
+	            response.sendRedirect("index");
+	        }
+	        else { 
+	        	request.setAttribute("error", "Invalid password, try again");
+	            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
+	        }
         }
         else {
-            request.setAttribute("error", "Unknown user, please try again");
+        	request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         }
-    }
-	
-	User getUser() {
-		return users[userID];
 	}
 }

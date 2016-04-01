@@ -8,10 +8,13 @@
 	</head>
 	
 	<body>
+	
 	<center>
+	
 	<div id="Title">
 	<h1><center>You Have Successfully Joined a Room</center></h1>
 	</div>
+	
 	<div id="Content">
 	<div class='chatContainer'>
 		<div class='chatHeader'>
@@ -27,9 +30,22 @@
 		</div>
 	</div>
 	</div>
+	
+	<!--  not sure why button doesn't have styles -->
+	
+	<div id="Content">
+		<center><a href="index">
+		<button class="button button1",>
+		<h2>Go Back</h2>
+		</button>
+		</a></center>
+	</div>
+	
 	<div id="Credits">
 	<h5><center>Created by: Brandon Longenecker and Zackeree Henry</center></h5>
 	</div>
+	
 	</center>
+	
 	</body>
 </html>
