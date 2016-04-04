@@ -48,6 +48,30 @@ public class User {
 		this.email = email;
 	}
 	
+	public boolean validateEmail(String entry) {
+		int valid = 0;
+		int atloc = 0;
+		int numat = 0;
+		for (int x = 0; x < entry.length(); x++) {
+			if (entry.charAt(x) == '@' && x != 0 && numat == 0) {
+				atloc = x;
+				valid ++;
+				numat++;
+			}
+		}
+		for (int x = 0; x < entry.length(); x++) {
+			if (entry.charAt(x) == '.' && x > atloc && entry.charAt(x-1) != '@' && x != entry.length()-1) {
+				valid ++;
+			}
+		}
+		
+		if (valid == 2) {
+			return true;
+		}
+		else {return false;}
+		
+	}
+	
 	public int getInfraction() {
 		return this.infraction;
 	}

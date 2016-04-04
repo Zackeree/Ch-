@@ -48,6 +48,16 @@ public class UserTest {
 	}
 	
 	@Test
+	public void testValidEmail() {
+		assertTrue(model.validateEmail(model.getEmail()));
+		assertFalse(model.validateEmail("a@b."));
+		assertTrue(model.validateEmail("b.long@gmail.com"));
+		assertFalse(model.validateEmail("a@.com"));
+		assertTrue(model.validateEmail("a@b.c"));
+		assertFalse(model.validateEmail("@gmail.com"));
+	}
+	
+	@Test
 	public void testSetEmail() {
 		model.setEmail("yes@google.com");
 		assertEquals("yes@google.com", model.getEmail());
