@@ -11,6 +11,7 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.admin = false;
+		this.infraction = 0;
 	}
 	
 	/******These methods are WIP*********************
@@ -52,8 +53,8 @@ public class User {
 	}
 	
 	public void setInfraction(int time) {
-		if(this.admin == true)
-			this.infraction = time;
+		//if(this.admin == true)
+		this.infraction = time;
 	}
 	
 	public boolean isAdmin() {
@@ -64,11 +65,8 @@ public class User {
 	}
 	
 	// This method is a toggle method. If already an admin, calling it removes admin status.
-	public void setAdmin() {
-		if(!this.admin)
-			this.admin = true;
-		else if(this.admin)
-			this.admin = false;
+	public void setAdmin(boolean setting) {
+		this.admin = setting;
 	}
 	
 	// Not properly implemented
