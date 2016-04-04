@@ -86,12 +86,7 @@ public class User {
 		if(this.admin == true)
 			model.setInfraction(time);
 	}
-	
-	public void kickUser(User model) {
-		if(this.admin == true)
-			model.log_out();
-	}
-	
+		
 	public void ORDel() {
 		
 	}
