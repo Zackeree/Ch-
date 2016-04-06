@@ -2,7 +2,7 @@
 
 body {
 
-    background-color: #66ccff;
+    background-color: white;
 	
 }
 
@@ -14,7 +14,7 @@ body {
 	width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #009900;
+	background-color: black;
 	color: white;
 	
 }
@@ -26,7 +26,8 @@ body {
 	width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #b3ffb3;
+	background-color: red;
+	color: white
 
 }
 	
@@ -38,7 +39,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
-	background-color: #009900;
+	background-color: black;
 	color: white;
 	
 }
@@ -62,19 +63,19 @@ body {
 }
 
 .button1 {
-    background-color: #cc99ff;
+    background-color: white;
     color: black;
     border: 3px solid black;
 }
 
 .button1:hover {
-    background-color: #3399ff;
+    background-color: black;
     color: white;
 }
 
 input {
 
-    border: 2px solid black;
+    border: 2px solid orange;
     -webkit-box-shadow: 
       inset 0 0 8px  rgba(0,0,0,0.1),
             0 0 16px rgba(0,0,0,0.1); 
@@ -87,7 +88,7 @@ input {
     padding: 5px;
     font-family: Rockwell,"Courier Bold",Courier,Georgia,Times,"Times New Roman",serif;
    	font-size: 18px;
-    background: #D3D3D3;
+    background: white;
     margin: 0 0 10px 0;
 }
 

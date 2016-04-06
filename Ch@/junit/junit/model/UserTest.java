@@ -55,6 +55,7 @@ public class UserTest {
 		assertFalse(model.validateEmail("a@.com"));
 		assertTrue(model.validateEmail("a@b.c"));
 		assertFalse(model.validateEmail("@gmail.com"));
+		assertFalse(model.validateEmail("a@b@c"));
 	}
 	
 	@Test

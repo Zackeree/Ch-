@@ -50,13 +50,11 @@ public class User {
 	
 	public boolean validateEmail(String entry) {
 		int valid = 0;
-		int atloc = 0;
-		int numat = 0;
+		int atloc = 100;
 		for (int x = 0; x < entry.length(); x++) {
-			if (entry.charAt(x) == '@' && x != 0 && numat == 0) {
+			if (entry.charAt(x) == '@' && x != 0 && atloc == 100) {
 				atloc = x;
 				valid ++;
-				numat++;
 			}
 		}
 		for (int x = 0; x < entry.length(); x++) {
