@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>war/_view/css/background.jpg</name>
+			<type>1</type>
+			<location>H:/git/Chat-Room/Ch@/war/_view/css/background.jpg</location>
+		</link>
+	</linkedResources>
 </projectDescription>
