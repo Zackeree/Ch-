@@ -1,6 +1,7 @@
 package model;
 
 public class User {
+	private int userIdNum;
 	private String id, password, email;
 	private int infraction;
 	private boolean admin;
@@ -23,6 +24,14 @@ public class User {
 		
 	}
 	*************************************************/
+	public int getUserIDNum() {
+		return this.userIdNum;
+	}
+	
+	public void setUserIDNum(int num) {
+		this.userIdNum = num;
+	}
+	
 	public String getID() {
 		return this.id;
 	}
