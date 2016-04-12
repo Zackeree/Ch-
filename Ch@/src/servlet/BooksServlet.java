@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.BooksController;
-import edu.ycp.cs320.booksdb.model.Book;
+import model.Book;
 
 public class BooksServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

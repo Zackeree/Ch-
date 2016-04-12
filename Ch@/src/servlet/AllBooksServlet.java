@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.AllBooksController;
-import edu.ycp.cs320.booksdb.model.Author;
-import edu.ycp.cs320.booksdb.model.Book;
-import edu.ycp.cs320.booksdb.model.Pair;
+import model.Author;
+import model.Book;
+import model.Pair;
 
 public class AllBooksServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

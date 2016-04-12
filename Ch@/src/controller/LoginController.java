@@ -1,6 +1,6 @@
 package controller;
 
-import edu.ycp.cs320.lab03.model.Library;
+import model.Library;
 
 public class LoginController {
 	private Library model = null;

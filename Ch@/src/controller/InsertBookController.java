@@ -1,8 +1,8 @@
 package controller;
 
-import edu.ycp.cs320.booksdb.persist.DatabaseProvider;
-import edu.ycp.cs320.booksdb.persist.DerbyDatabase;
-import edu.ycp.cs320.booksdb.persist.IDatabase;
+import persist.DatabaseProvider;
+import persist.DerbyDatabase;
+import persist.IDatabase;
 
 public class InsertBookController {
 

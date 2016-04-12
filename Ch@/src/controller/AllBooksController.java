@@ -3,12 +3,12 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.ycp.cs320.booksdb.model.Author;
-import edu.ycp.cs320.booksdb.model.Book;
-import edu.ycp.cs320.booksdb.model.Pair;
-import edu.ycp.cs320.booksdb.persist.DatabaseProvider;
-import edu.ycp.cs320.booksdb.persist.DerbyDatabase;
-import edu.ycp.cs320.booksdb.persist.IDatabase;
+import model.Author;
+import model.Book;
+import model.Pair;
+import persist.DatabaseProvider;
+import persist.DerbyDatabase;
+import persist.IDatabase;
 
 public class AllBooksController {
 
