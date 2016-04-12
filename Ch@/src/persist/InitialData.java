@@ -101,7 +101,7 @@ public class InitialData {
 				user.setInfraction(Integer.parseInt(i.next()));
 				userList.add(user);
 			}
-			System.out.println("bookList loaded from CSV file");			
+			System.out.println("userList loaded from CSV file");			
 			return userList;
 		} finally {
 			readUsers.close();
@@ -135,7 +135,7 @@ public class InitialData {
 				user.setInfraction(Integer.parseInt(i.next()));*/
 				roomList.add(room);
 			}
-			System.out.println("bookList loaded from CSV file");			
+			System.out.println("roomList loaded from CSV file");			
 			return roomList;
 		} finally {
 			readRooms.close();
