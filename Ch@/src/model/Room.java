@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Room {
+	private int roomId;
 	private String name;
 	private ArrayList<User> users;
 	private ArrayList<Message> messages;
@@ -38,6 +39,14 @@ public class Room {
 	}
 	
 	/* GETTERS AND SETTERS */
+	public int getRoomId() {
+		return this.roomId;
+	}
+	
+	public void setRoomId(int id) {
+		this.roomId = id;
+	}
+	
 	public String getName() {
 		return this.name;
 	}

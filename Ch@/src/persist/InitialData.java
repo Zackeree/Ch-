@@ -8,6 +8,7 @@ import java.util.List;
 import model.Author;
 import model.Book;
 import model.BookAuthor;
+import model.Room;
 import model.User;
 
 public class InitialData {
@@ -77,11 +78,12 @@ public class InitialData {
 		}
 	}
 	
+	// User Table
 	public static List<User> getUsers() throws IOException {
 		List<User> userList = new ArrayList<User>();
 		ReadCSV readUsers = new ReadCSV("users.csv");
 		try {
-			// auto-generated primary key for table books
+			// auto-generated primary key for table users
 			Integer userId = 1;
 			while (true) {
 				List<String> tuple = readUsers.next();
@@ -91,23 +93,52 @@ public class InitialData {
 				Iterator<String> i = tuple.iterator();
 				User user = new User(null, null, null);
 				
-				// read book ID from CSV file, but don't use it
-				// it's there for reference purposes, just make sure that it is correct
-				// when setting up the BookAuthors CSV file
 				Integer.parseInt(i.next());
-				// auto-generate book ID, instead
-				user.setUserIDNum(userId++);				
-//				book.setAuthorId(Integer.parseInt(i.next()));  // no longer in books table
+				user.setUserIDNum(userId++);
 				user.setID(i.next());
 				user.setPassword(i.next());
 				user.setEmail(i.next());
-				//user.setInfraction(i.next());
+				user.setInfraction(Integer.parseInt(i.next()));
 				userList.add(user);
 			}
 			System.out.println("bookList loaded from CSV file");			
 			return userList;
 		} finally {
 			readUsers.close();
+		}
+	}
+	
+	// Room table
+	public static List<Room> getRooms() throws IOException {
+		List<Room> roomList = new ArrayList<Room>();
+		ReadCSV readRooms = new ReadCSV("rooms.csv");
+		try {
+			// auto-generated primary key for table rooms
+			Integer roomId = 1;
+			while (true) {
+				List<String> tuple = readRooms.next();
+				if (tuple == null) {
+					break;
+				}
+				Iterator<String> i = tuple.iterator();
+				Room room = new Room(null, false, null);
+				
+				// read book ID from CSV file, but don't use it
+				// it's there for reference purposes, just make sure that it is correct
+				// when setting up the BookAuthors CSV file
+				Integer.parseInt(i.next());
+				// auto-generate book ID, instead
+				room.setRoomId(roomId++);
+				room.setName(i.next());
+				/*user.setPassword(i.next());
+				user.setEmail(i.next());
+				user.setInfraction(Integer.parseInt(i.next()));*/
+				roomList.add(room);
+			}
+			System.out.println("bookList loaded from CSV file");			
+			return roomList;
+		} finally {
+			readRooms.close();
 		}
 	}
 	
