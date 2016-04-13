@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 
 public class Message {
+	private int idNum;
 	private String text;
 	private int length;
 	private long time;
@@ -19,6 +20,22 @@ public class Message {
 		this.text = this.text.toLowerCase().replaceAll("damn", "****");
 		
 		return text;
+	}
+	
+	public int getIdNum() {
+		return this.idNum;
+	}
+	
+	public void setIdNum(int id) {
+		this.idNum = id;
+	}
+	
+	public String getText() {
+		return this.text;
+	}
+	
+	public void setText(String text) {
+		this.text = text;
 	}
 	
 	public String GetTime() {

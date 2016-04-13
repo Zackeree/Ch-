@@ -12,7 +12,10 @@ import java.util.List;
 import model.Author;
 import model.Book;
 import model.BookAuthor;
+import model.Message;
 import model.Pair;
+import model.Room;
+import model.User;
 
 public class DerbyDatabase implements IDatabase {
 	static {
@@ -617,6 +620,14 @@ public class DerbyDatabase implements IDatabase {
 		bookAuthor.setAuthorId(resultSet.getInt(index++));
 	}
 	
+	// retrieve User information
+	private void loadUser(User user, ResultSet resultSet, int index) throws SQLException {
+		user.setUserIDNum(resultSet.getInt(index++));
+		user.setID(resultSet.getString(index++));
+		user.setPassword(resultSet.getString(index++));
+		user.setEmail(resultSet.getString(index++));
+	}
+	
 	//  creates the Authors and Books tables
 	public void createTables() {
 		executeTransaction(new Transaction<Boolean>() {
@@ -624,7 +635,10 @@ public class DerbyDatabase implements IDatabase {
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
 				PreparedStatement stmt2 = null;
-				PreparedStatement stmt3 = null;				
+				PreparedStatement stmt3 = null;
+				PreparedStatement stmt4 = null;
+				PreparedStatement stmt5 = null;
+				PreparedStatement stmt6 = null;
 			
 				try {
 					stmt1 = conn.prepareStatement(
@@ -660,8 +674,44 @@ public class DerbyDatabase implements IDatabase {
 					);
 					stmt3.executeUpdate();
 					
-					System.out.println("BookAuthors table created");					
+					System.out.println("BookAuthors table created");
+					
+					stmt4 = conn.prepareStatement(
+							"create table users (" +
+							"	user_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	username varchar(20)," +
+							"	password varchar(40)," +
+							"	email varchar(80)"    +
+							")"
+					);
+					stmt4.executeUpdate();
+					
+					System.out.println("Users table created");
 										
+					stmt5 = conn.prepareStatement(
+							"create table rooms (" +
+							"	room_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	room_name varchar(80)," +
+							"	room_private boolean"   +
+							")"
+					);
+					stmt5.executeUpdate();
+					
+					System.out.println("Rooms table created");
+					
+					stmt6 = conn.prepareStatement(
+							"create table messages (" +
+							"	message_id integer primary key " +
+							"		generated always as identity (start with 1, increment by 1), " +
+							"	message_text varchar(80)" +
+							")"
+					);
+					stmt6.executeUpdate();
+					
+					System.out.println("Messages table created");
+					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(stmt1);
@@ -679,11 +729,17 @@ public class DerbyDatabase implements IDatabase {
 				List<Author> authorList;
 				List<Book> bookList;
 				List<BookAuthor> bookAuthorList;
+				List<User> userList;
+				List<Room> roomList;
+				List<Message> mList;
 				
 				try {
 					authorList     = InitialData.getAuthors();
 					bookList       = InitialData.getBooks();
-					bookAuthorList = InitialData.getBookAuthors();					
+					bookAuthorList = InitialData.getBookAuthors();
+					userList       = InitialData.getUsers();
+					roomList	   = InitialData.getRooms();
+					mList		   = InitialData.getMessages();
 				} catch (IOException e) {
 					throw new SQLException("Couldn't read initial data", e);
 				}
@@ -691,6 +747,9 @@ public class DerbyDatabase implements IDatabase {
 				PreparedStatement insertAuthor     = null;
 				PreparedStatement insertBook       = null;
 				PreparedStatement insertBookAuthor = null;
+				PreparedStatement insertUser       = null;
+				PreparedStatement insertRoom	   = null;
+				PreparedStatement insertMessage    = null;
 
 				try {
 					// must completely populate Authors table before populating BookAuthors table becasue of primary keys
@@ -728,13 +787,48 @@ public class DerbyDatabase implements IDatabase {
 					}
 					insertBookAuthor.executeBatch();	
 					
-					System.out.println("BookAuthors table populated");					
+					System.out.println("BookAuthors table populated");
+					
+					// insert user :)
+					insertUser = conn.prepareStatement("insert into users (username, password, email) values (?, ?, ?)");
+					for (User user : userList) {
+						//auto generated //insertUser.setInt(1, user.getUserIDNum());
+						insertUser.setString(1, user.getID());
+						insertUser.setString(2, user.getPassword());
+						insertUser.setString(3, user.getEmail());
+						insertUser.addBatch();
+					}
+					insertUser.executeBatch();
+					
+					System.out.println("Users table populated");
+					
+					// insert room
+					insertRoom = conn.prepareStatement("insert into rooms (room_name, room_private) values (?, ?)");
+					for (Room room : roomList) {
+						insertRoom.setString(1, room.getName());
+						insertRoom.setBoolean(2, room.isPrivate());
+						insertRoom.addBatch();
+					}
+					insertRoom.executeBatch();
+					
+					System.out.println("Rooms table populated");
+					
+					// insert message
+					insertMessage = conn.prepareStatement("insert into messages (message_text) values (?)");
+					for (Message message : mList) {
+						insertMessage.setString(1, message.getText());
+						insertMessage.addBatch();
+					}
+					insertMessage.executeBatch();
 					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(insertBook);
 					DBUtil.closeQuietly(insertAuthor);
-					DBUtil.closeQuietly(insertBookAuthor);					
+					DBUtil.closeQuietly(insertBookAuthor);
+					DBUtil.closeQuietly(insertUser);
+					DBUtil.closeQuietly(insertRoom);
+					DBUtil.closeQuietly(insertMessage);
 				}
 			}
 		});

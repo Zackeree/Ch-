@@ -67,8 +67,8 @@ public class Room {
 		return this.messages;
 	}
 	
-	public void setMessages(ArrayList<Message> messages) {
-		this.messages = messages;
+	public void setMessage(Message message) {
+		this.messages.add(message);
 	}
 	
 	public boolean isPrivate() {
