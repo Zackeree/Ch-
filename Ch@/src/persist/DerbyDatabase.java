@@ -847,6 +847,8 @@ public class DerbyDatabase implements IDatabase {
 					}
 					insertMUR.executeBatch();
 					
+					System.out.println("MUR table populated");
+					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(insertBook);
