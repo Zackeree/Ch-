@@ -9,6 +9,7 @@ import model.Author;
 import model.Book;
 import model.BookAuthor;
 import model.Message;
+import model.MessageUserRoom;
 import model.Room;
 import model.User;
 
@@ -182,6 +183,29 @@ public class InitialData {
 			return bookAuthorList;
 		} finally {
 			readBookAuthors.close();
+		}
+	}
+	
+	public static List<MessageUserRoom> getMessageUserRoom() throws IOException {
+		List<MessageUserRoom> MURList = new ArrayList<MessageUserRoom>();
+		ReadCSV readMUR = new ReadCSV("message_user_room.csv");
+		try {
+			while (true) {
+				List<String> tuple = readMUR.next();
+				if (tuple == null) {
+					break;
+				}
+				Iterator<String> i = tuple.iterator();
+				MessageUserRoom MUR = new MessageUserRoom();
+				MUR.setMessageIDNum(Integer.parseInt(i.next()));	
+				MUR.setUserIDNum(Integer.parseInt(i.next()));
+				MUR.setRoomIDNum(Integer.parseInt(i.next()));
+				MURList.add(MUR);
+			}
+			System.out.println("MessageUserRoomList loaded from CSV file");			
+			return MURList;
+		} finally {
+			readMUR.close();
 		}
 	}
 }
