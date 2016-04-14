@@ -38,7 +38,7 @@ public class RoomTest {
 		messages2.add(new Message("ok"));
 		
 		model2.setUsers(users2);
-		model2.setMessages(messages2);
+		model2.setMessage(messages2.get(1));
 	}
 	
 	@Test
@@ -108,12 +108,12 @@ public class RoomTest {
 	}
 
 	@Test
-	public void testSetMessages() {
-		model.setMessages(messages2);
-		model2.setMessages(messages);
+	public void testSetMessage() {
+		model.setMessage(messages2.get(1));
+		//model2.setMessage(messages.get(1));
 		
-		assertEquals(messages2, model.getMessages());
-		assertEquals(messages, model2.getMessages());
+		assertEquals(messages2.get(1), model.getMessages().get(1));
+		//assertEquals(messages.get(1), model2.getMessages().get(1));
 	}
 
 	@Test
