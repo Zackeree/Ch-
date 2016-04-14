@@ -13,6 +13,7 @@ import model.Author;
 import model.Book;
 import model.BookAuthor;
 import model.Message;
+import model.MessageUserRoom;
 import model.Pair;
 import model.Room;
 import model.User;
@@ -639,6 +640,7 @@ public class DerbyDatabase implements IDatabase {
 				PreparedStatement stmt4 = null;
 				PreparedStatement stmt5 = null;
 				PreparedStatement stmt6 = null;
+				PreparedStatement stmt7 = null;
 			
 				try {
 					stmt1 = conn.prepareStatement(
@@ -712,6 +714,17 @@ public class DerbyDatabase implements IDatabase {
 					
 					System.out.println("Messages table created");
 					
+					stmt7 = conn.prepareStatement(
+							"create table message_user_room (" +
+							"	message_id integer, " +
+							"	user_id integer, " +
+							"	room_id integer" +
+							")"
+					);
+					stmt7.executeUpdate();
+					
+					System.out.println("Message User Room table created");
+					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(stmt1);
@@ -732,6 +745,7 @@ public class DerbyDatabase implements IDatabase {
 				List<User> userList;
 				List<Room> roomList;
 				List<Message> mList;
+				List<MessageUserRoom> MURList;
 				
 				try {
 					authorList     = InitialData.getAuthors();
@@ -740,6 +754,7 @@ public class DerbyDatabase implements IDatabase {
 					userList       = InitialData.getUsers();
 					roomList	   = InitialData.getRooms();
 					mList		   = InitialData.getMessages();
+					MURList		   = InitialData.getMessageUserRoom();
 				} catch (IOException e) {
 					throw new SQLException("Couldn't read initial data", e);
 				}
@@ -750,6 +765,7 @@ public class DerbyDatabase implements IDatabase {
 				PreparedStatement insertUser       = null;
 				PreparedStatement insertRoom	   = null;
 				PreparedStatement insertMessage    = null;
+				PreparedStatement insertMUR		   = null;
 
 				try {
 					// must completely populate Authors table before populating BookAuthors table becasue of primary keys
@@ -821,6 +837,16 @@ public class DerbyDatabase implements IDatabase {
 					}
 					insertMessage.executeBatch();
 					
+					// insert MUR
+					insertMUR = conn.prepareStatement("insert into message_user_room (message_id, user_id, room_id) values (?, ?, ?)");
+					for (MessageUserRoom mur : MURList) {
+						insertMUR.setInt(1, mur.getMessageIDNum());
+						insertMUR.setInt(2, mur.getUserIDNum());
+						insertMUR.setInt(3, mur.getRoomIDNum());
+						insertMUR.addBatch();
+					}
+					insertMUR.executeBatch();
+					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(insertBook);
@@ -829,6 +855,7 @@ public class DerbyDatabase implements IDatabase {
 					DBUtil.closeQuietly(insertUser);
 					DBUtil.closeQuietly(insertRoom);
 					DBUtil.closeQuietly(insertMessage);
+					DBUtil.closeQuietly(insertMUR);
 				}
 			}
 		});
