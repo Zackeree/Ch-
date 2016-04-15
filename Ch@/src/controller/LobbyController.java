@@ -35,4 +35,10 @@ public class LobbyController {
 		
 		return users;
 	}
+	
+	// to be filled. obviously
+	public ArrayList<Room> getRooms() {
+		
+		return null;
+	}
 }

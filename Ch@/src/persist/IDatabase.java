@@ -4,7 +4,9 @@ import java.util.List;
 
 import model.Author;
 import model.Book;
+import model.Message;
 import model.Pair;
+import model.Room;
 import model.User;
 
 public interface IDatabase {
@@ -15,4 +17,5 @@ public interface IDatabase {
 	public List<Author> findAllAuthors();
 	public List<Author> removeBookByTitle(String title);
 	public List<User> findAllUsers();
+	public List<Pair<Message, Room>> findMessageByRoom();
 }

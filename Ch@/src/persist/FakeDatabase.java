@@ -184,4 +184,10 @@ public class FakeDatabase implements IDatabase {
 		}
 		return result;
 	}
+
+	@Override
+	public List<Pair<Message, Room>> findMessageByRoom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
