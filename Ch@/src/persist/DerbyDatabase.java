@@ -878,19 +878,17 @@ public class DerbyDatabase implements IDatabase {
 
 	@Override
 	public List<User> findAllUsers() {
-		/*return executeTransaction(new Transaction<List<Author>>() {
+		return executeTransaction(new Transaction<List<User>>() {
 			@Override
-			public List<Author> execute(Connection conn) throws SQLException {
+			public List<User> execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
 				ResultSet resultSet = null;
 				
 				try {
 					stmt = conn.prepareStatement(
-							"select * from authors " +
-							" order by author_lastname asc, author_firstname asc"
-					);
+							"select username from users");
 					
-					List<Author> result = new ArrayList<Author>();
+					List<User> result = new ArrayList<User>();
 					
 					resultSet = stmt.executeQuery();
 					
@@ -900,15 +898,15 @@ public class DerbyDatabase implements IDatabase {
 					while (resultSet.next()) {
 						found = true;
 						
-						Author author = new Author();
-						loadAuthor(author, resultSet, 1);
+						User user = new User(null, null, null);
+						loadUser(user, resultSet, 1);
 						
-						result.add(author);
+						result.add(user);
 					}
 					
-					// check if any authors were found
+					// check if any users were found
 					if (!found) {
-						System.out.println("No authors were found in the database");
+						System.out.println("No users were found in the database");
 					}
 					
 					return result;
@@ -917,7 +915,6 @@ public class DerbyDatabase implements IDatabase {
 					DBUtil.closeQuietly(stmt);
 				}
 			}
-		});*/
-		return null;
+		});
 	}
 }
