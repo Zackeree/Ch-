@@ -2,6 +2,14 @@
 	box-sizing: border-box;
 }
 
+/* 
+
+	<p style="text-align: left;">
+	hello!<br>
+	<span style="float:right;">4:32 A.M.</span>
+
+*/
+
 body {
 
     background-image: url("background.jpg");
@@ -100,6 +108,8 @@ body {
 	height: 480px;
 	border-bottom: 1px solid #dddd;
 	overflow-y: scroll;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 .chatContainer > .chatBottom form input[type='submit']{

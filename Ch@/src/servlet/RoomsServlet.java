@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.FakeDatabase;
+import database.IDatabase;
 import model.Message;
 import model.User;
 import servlet.LoginServlet;
@@ -28,12 +29,12 @@ public class RoomsServlet extends HttpServlet {
 			throws ServletException, IOException {
     	String input = request.getParameter("text");
     	
-    	ArrayList<String> messageList = db.retrieveMessages();
+    	ArrayList<Message> messageList = db.retrieveMessages();
     	
     	Message message = new Message(input);
     	
     	
-    	db.addMessage(message.ValidateMessage());
+    	db.addMessage(message.getValidatedMessage());
     	
     	request.setAttribute("messages", messageList);
     	request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 	<head>
@@ -12,7 +13,7 @@
 	<center>
 	
 	<div id="Title">
-	<h1><center>You Have Successfully Joined a Room</center></h1>
+	<h1><center>You Have Joined -room name-</center></h1>
 	</div>
 	
 	<div id="Content">
@@ -22,19 +23,15 @@
 		</div>
 		<div class='chatMessages'>
 		
-		<h3>
-		hello?<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
-		testing!<br><br><br><br><br><br><br><br><br><br><br><br>
-		
-		<form action="${pageContext.servletContext.contextPath}/rooms" method='post'>
-		<value='messages'/>
-		</form>
-		
-		</h3>
-		
+		<ul>
+		<c:forEach items="${messages}" var="message">
+			<li>${message.text}</li>
+		</c:forEach>
+		</ul>
 		
 		</div>
-		<span class="messages">${messages}</span><br><br>
+		<!-- <span class="messages">${messages}</span><br><br>  -->
+		
 		<div class='chatBottom'>
 			<form action="${pageContext.servletContext.contextPath}/rooms" method='post'>
 				

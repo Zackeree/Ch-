@@ -19,9 +19,13 @@ public class LoginServlet extends HttpServlet {
 	String id;
 	
     @Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+    	String shared = "shared";
+        request.setAttribute("sharedId", shared); // add to request
+        request.getSession().setAttribute("sharedId", shared); // add to session
+        this.getServletConfig().getServletContext().setAttribute("sharedId", shared); // add to application context
+		request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
 	}
 	
 	@Override

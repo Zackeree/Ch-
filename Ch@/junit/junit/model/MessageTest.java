@@ -20,14 +20,9 @@ public class MessageTest {
 	@Test
 	public void testValidMessage() {
 		
-		assertEquals("asd****fe", model.ValidateMessage());
+		assertEquals("asd****fe", model.getValidatedMessage());
 	}
 	
-	@Test
-	public void testGetTime() {
-		
-		System.out.println(model.GetTime());
-	}
 	
 	// ADD MORE TEST CASES TO THIS
 	

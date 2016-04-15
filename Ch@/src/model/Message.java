@@ -1,48 +1,47 @@
 package model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-
+import java.time.LocalDateTime;
 
 public class Message {
 	private int idNum;
 	private String text;
-	private int length;
-	private long time;
-	
+	private LocalDateTime time;
+
 	public Message(String text) {
 		this.text = text;
+		this.time = LocalDateTime.now();
 	}
-	
-	public String ValidateMessage() {
-		
+
+	public Message getValidatedMessage() {
 		this.text = this.text.toLowerCase().replaceAll("damn", "****");
-		
-		return text;
+		return this;
 	}
-	
+
 	public int getIdNum() {
 		return this.idNum;
 	}
-	
+
 	public void setIdNum(int id) {
 		this.idNum = id;
 	}
-	
+
 	public String getText() {
 		return this.text;
 	}
-	
+
 	public void setText(String text) {
 		this.text = text;
 	}
-	
-	public String GetTime() {
-		
-		Date now = new Date();
-		String time = new SimpleDateFormat("h:mm:ss a").format(now);
-		
+
+	public LocalDateTime getTime() {
 		return time;
+	}
+
+	public void setTime(LocalDateTime time) {
+		this.time = time;
+	}
+	
+	public String toString() {
+		return text + "\t" + time.toString();
 	}
 }

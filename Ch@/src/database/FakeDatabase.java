@@ -7,7 +7,7 @@ import model.Message;
 
 public class FakeDatabase implements IDatabase {
 	private ArrayList<User> userList = new ArrayList<User>();
-	private ArrayList<String> messageList = new ArrayList();
+	private ArrayList<Message> messageList = new ArrayList<Message>();
 	
 	// Default FakeDatabase constructor
 	public FakeDatabase() {
@@ -15,9 +15,9 @@ public class FakeDatabase implements IDatabase {
 		userList.add(new User("Brandon", "sqrt", "blonge@chatroom.gov"));
 		userList.add(new User("Zack", "allimager", "ceo@google.com"));
 		
-		messageList.add("hellow");
-		messageList.add("Do you like spam?");
-		messageList.add("No, go away!");
+		messageList.add(new Message("Hey! Do you like spam?"));
+		messageList.add(new Message("Yeah! I love spam!"));
+		messageList.add(new Message("No way! ME TOOO!!! :D"));
 		
 	}
 	
@@ -67,16 +67,16 @@ public class FakeDatabase implements IDatabase {
 	}
 	
 	@Override
-	public ArrayList retrieveMessages() {
+	public ArrayList<Message> retrieveMessages() {
 		
 		return messageList;
 	}
 	
-	public void addMessage(String text) {
+	public void addMessage(Message message) {
 		
-		if (text.isEmpty() == false) {
+		if (message.getText().isEmpty() == false) {
 			
-			messageList.add(text);
+			messageList.add(message);
 		}
 	}
 }

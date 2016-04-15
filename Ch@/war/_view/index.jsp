@@ -40,6 +40,8 @@
 			</a></center>
 		</div>
 		
+		<div id="Filler"></div>
+		
 		<div id="Credits">
 			<h5><center>Created by: Brandon Longenecker and Zackeree Henry</center></h5>
 		</div>
