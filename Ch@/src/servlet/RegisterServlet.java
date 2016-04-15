@@ -29,18 +29,20 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("pass");
         String password2 = request.getParameter("pass2");
         String email = request.getParameter("email");
- 
-        System.out.println("username: " + username);
-        System.out.println("password: " + password);
-        System.out.println("password2: " + password2);
-        System.out.println("email: " + email);
+        
+        User model = new User(username, password, email);
+        
         if (username.isEmpty() == false && password.isEmpty() == false && email.isEmpty() == false) {
         	if (db.retrieveUser(username) == null) {
         		if (password.equals(password2)) {
-        			
-        			db.createUser(username, password, email); 
-        			response.sendRedirect("index");
-        		
+        			if (model.validateEmail(email)) {
+	        			db.createUser(username, password, email); 
+	        			response.sendRedirect("index");
+        			}
+        			else { 
+        				request.setAttribute("error", "Invalid email address!");
+            			request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
+        			}
         		}
         		else {
         			request.setAttribute("error", "Passwords do not match!");

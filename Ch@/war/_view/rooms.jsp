@@ -18,13 +18,25 @@
 	<div id="Content">
 	<div class='chatContainer'>
 		<div class='chatHeader'>
-			<h3>Welcome, Chat Away!</h3> <!-- Display users name/chat rooms name here -->
+			<h2>Welcome, Chat Away!</h2> <!-- Display users name/chat rooms name here -->
 		</div>
-		<div class='chatMessages'></div>
+		<div class='chatMessages'>
+		
+		<h3>
+		hello?<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+		testing!<br><br><br><br><br><br><br><br><br><br><br><br>
+		
+		<form action="${pageContext.servletContext.contextPath}/rooms" method='post'>
+		<value='messages'/>
+		</form>
+		
+		</h3>
+		
+		</div>
 		<span class="messages">${messages}</span><br><br>
 		<div class='chatBottom'>
 			<form action="${pageContext.servletContext.contextPath}/rooms" method='post'>
-				<s:iterator value='messages'/><s:property /></s:iterator>
+				
 				<input type='text' name='text' id='text' value='' placeholder='type your chat message' />
 				<input type='submit' name='submit' value='Post' />
 			</form>
