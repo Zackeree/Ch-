@@ -390,6 +390,83 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
+	public Integer insertUser(final String username, final String password, final String email) {
+		return executeTransaction(new Transaction<Integer>() {
+			@Override
+			public Integer execute(Connection conn) throws SQLException {
+				PreparedStatement stmt1 = null;
+				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				PreparedStatement stmt4 = null;
+				PreparedStatement stmt5 = null;
+				PreparedStatement stmt6 = null;				
+				
+				ResultSet resultSet1 = null;
+				ResultSet resultSet2 = null;
+				ResultSet resultSet3 = null;
+//	(unused)	ResultSet resultSet4 = null;
+				ResultSet resultSet5 = null;				
+//	(unused)	ResultSet resultSet6 = null;
+				
+				// for saving author ID and book ID
+				Integer user_id = -1;
+
+				//  make sure username doesn't already exist
+				try {
+					stmt1 = conn.prepareStatement(
+							"select username from users " +
+							"  where username = ?"
+					);
+					stmt1.setString(1, username);
+					
+					// execute the query, get the result
+					resultSet1 = stmt1.executeQuery();
+
+					
+					// if username was found, throw an error message					
+					if (resultSet1.next())
+					{
+						System.out.println("A user already exists with that name.");						
+					}
+					else
+					{
+							stmt2 = conn.prepareStatement(
+									"insert into users (username, password, email) " +
+									"  values(?, ?, ?) "
+							);
+							stmt2.setString(1, username);
+							stmt2.setString(2, password);
+							stmt2.setString(3, email);
+							
+							// execute the update
+							stmt2.executeUpdate();
+							
+							resultSet2 = stmt1.executeQuery();;
+							
+							System.out.println("You have successfully registered.");						
+					}
+					
+					
+					
+					return user_id;
+				} finally {
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(stmt1);
+					DBUtil.closeQuietly(resultSet2);
+					DBUtil.closeQuietly(stmt2);					
+					DBUtil.closeQuietly(resultSet3);
+					DBUtil.closeQuietly(stmt3);					
+// (unused)			DBUtil.closeQuietly(resultSet4);
+					DBUtil.closeQuietly(stmt4);
+					DBUtil.closeQuietly(resultSet5);
+					DBUtil.closeQuietly(stmt5);
+// (unused)			DBUtil.closeQuietly(resultSet6);
+					DBUtil.closeQuietly(stmt6);
+				}
+			}
+		});
+	}
+	
 	
 	// transaction that deletes Book (and possibly its Author) from Library
 	@Override
