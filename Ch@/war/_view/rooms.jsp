@@ -32,6 +32,7 @@
 		
 		</h3>
 		
+		
 		</div>
 		<span class="messages">${messages}</span><br><br>
 		<div class='chatBottom'>
