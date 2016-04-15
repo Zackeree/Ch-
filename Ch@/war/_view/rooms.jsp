@@ -25,7 +25,14 @@
 		
 		<ul>
 		<c:forEach items="${messages}" var="message">
-			<li>${message.text}</li>
+			<li>
+			<p style="text-align: left;">
+				${message.text}<br>
+			<span style="float:right;">
+				${message.time}
+			</span>
+			</p>
+			</li>
 		</c:forEach>
 		</ul>
 		
