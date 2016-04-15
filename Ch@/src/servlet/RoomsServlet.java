@@ -21,6 +21,8 @@ public class RoomsServlet extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+    	ArrayList<Message> messageList = db.retrieveMessages();
+    	req.setAttribute("messages", messageList);
 		req.getRequestDispatcher("/_view/rooms.jsp").forward(req, resp);
 	}
     
