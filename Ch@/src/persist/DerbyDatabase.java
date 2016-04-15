@@ -629,6 +629,19 @@ public class DerbyDatabase implements IDatabase {
 		user.setEmail(resultSet.getString(index++));
 	}
 	
+	// retrieve Messages
+	private void loadMessage(Message message, ResultSet resultSet, int index) throws SQLException {
+		message.setIdNum(resultSet.getInt(index++));
+		message.setText(resultSet.getString(index++));
+	}
+	
+	// retrieve Rooms
+	private void loadRoom(Room room, ResultSet resultSet, int index) throws SQLException {
+		room.setRoomId(resultSet.getInt(index++));
+		room.setName(resultSet.getString(index++));
+		room.setPrivate(resultSet.getBoolean(index++));
+	}
+	
 	//  creates the Authors and Books tables
 	public void createTables() {
 		executeTransaction(new Transaction<Boolean>() {
@@ -907,6 +920,56 @@ public class DerbyDatabase implements IDatabase {
 					// check if any users were found
 					if (!found) {
 						System.out.println("No users were found in the database");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+
+
+	@Override
+	public List<Pair<Message,Room>> findMessageByRoom() {
+		return executeTransaction(new Transaction<List<Pair<Message,Room>>>() {
+			@Override
+			public List<Pair<Message, Room>> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select messages.*, rooms.* " +
+							"  from messages, rooms, message_user_room " +
+							"  where messages.message_id = message_user_room.message_id " +
+							"    and rooms.room_id     = message_user_room.room_id "   +
+							"  order by messages.message_text asc"
+					);
+					
+					List<Pair<Message, Room>> result = new ArrayList<Pair<Message,Room>>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						Message message = new Message(null);
+						loadMessage(message, resultSet, 1);
+						Room room = new Room(null, found, null);
+						loadRoom(room, resultSet, 4);
+						
+						result.add(new Pair<Message, Room>(message, room));
+					}
+					
+					// check if any messages were found
+					if (!found) {
+						System.out.println("No messages in this room");
 					}
 					
 					return result;
