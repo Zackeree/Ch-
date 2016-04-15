@@ -6,18 +6,27 @@ import java.util.List;
 
 import model.Author;
 import model.Book;
+import model.Message;
 import model.Pair;
+import model.Room;
+import model.User;
 
 public class FakeDatabase implements IDatabase {
 	
 	private List<Author> authorList;
 	private List<Book> bookList;
+	private List<User> userList;
+	private List<Room> roomList;
+	private List<Message> messageList;
 	
 	// Fake database constructor - initializes the DB
 	// the DB only consists for a List of Authors and a List of Books
 	public FakeDatabase() {
 		authorList = new ArrayList<Author>();
 		bookList = new ArrayList<Book>();
+		userList = new ArrayList<User>();
+		roomList = new ArrayList<Room>();
+		messageList = new ArrayList<Message>();
 		
 		// Add initial data
 		readInitialData();
@@ -31,6 +40,10 @@ public class FakeDatabase implements IDatabase {
 		try {
 			authorList.addAll(InitialData.getAuthors());
 			bookList.addAll(InitialData.getBooks());
+			userList.addAll(InitialData.getUsers());
+			roomList.addAll(InitialData.getRooms());
+			messageList.addAll(InitialData.getMessages());
+			
 		} catch (IOException e) {
 			throw new IllegalStateException("Couldn't read initial data", e);
 		}
@@ -161,5 +174,14 @@ public class FakeDatabase implements IDatabase {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		List<User> result = new ArrayList<User>();
+		for (User user : userList) {
+			result.add(user);
+		}
+		return result;
 	}
 }

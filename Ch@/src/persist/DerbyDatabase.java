@@ -874,4 +874,50 @@ public class DerbyDatabase implements IDatabase {
 		
 		System.out.println("Library DB successfully initialized!");
 	}
+
+
+	@Override
+	public List<User> findAllUsers() {
+		/*return executeTransaction(new Transaction<List<Author>>() {
+			@Override
+			public List<Author> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from authors " +
+							" order by author_lastname asc, author_firstname asc"
+					);
+					
+					List<Author> result = new ArrayList<Author>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						Author author = new Author();
+						loadAuthor(author, resultSet, 1);
+						
+						result.add(author);
+					}
+					
+					// check if any authors were found
+					if (!found) {
+						System.out.println("No authors were found in the database");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});*/
+		return null;
+	}
 }
