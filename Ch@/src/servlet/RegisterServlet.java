@@ -22,6 +22,7 @@ public class RegisterServlet extends HttpServlet {
 	DerbyDatabase db = new DerbyDatabase();
 	ArrayList<User> result = new ArrayList();
 	RegisterController controller = new RegisterController();
+	private User model;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -36,11 +37,8 @@ public class RegisterServlet extends HttpServlet {
         String password2 = request.getParameter("pass2");
         String email = request.getParameter("email");
         
-        User model = new User(username, password, email);
-        
-        //db.insertUser(username, password, email);
-        
-        //response.sendRedirect("index");
+        model = new User(username, password, email);
+
         String errorMessage = controller.getError(username, password, password2, email);
         
         if(!controller.validateCredentials(username, password, password2, email)) {
