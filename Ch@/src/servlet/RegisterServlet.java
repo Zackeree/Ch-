@@ -41,38 +41,16 @@ public class RegisterServlet extends HttpServlet {
         //db.insertUser(username, password, email);
         
         //response.sendRedirect("index");
+        String errorMessage = controller.getError(username, password, password2, email);
         
         if(!controller.validateCredentials(username, password, password2, email)) {
-        	request.setAttribute("error", "Invalid Credentials!");
+        	request.setAttribute("error", errorMessage);
 			request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
         }
-        	
         
-        if (username.isEmpty() == false && password.isEmpty() == false && email.isEmpty() == false) {
-        	if (!db.findAllUsers().contains(username)) {
-        		if (password.equals(password2)) {
-        			if (model.validateEmail(email)) {
-	        			db.insertUser(username, password, email); 
-	        			response.sendRedirect("index");
-        			}
-        			else { 
-        				request.setAttribute("error", "Invalid email address!");
-            			request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
-        			}
-        		}
-        		else {
-        			request.setAttribute("error", "Passwords do not match!");
-        			request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
-        		}
-        	}
-        	else {
-        		request.setAttribute("error", "Username already taken!");
-        		request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
-        	}
-        }
         else {
-        	request.setAttribute("error", "One or more fields is empty!");
-    		request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
+        	controller.registerUser(username, password, email);
+        	response.sendRedirect("index");
         }
 	}
 }
