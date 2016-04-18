@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.RegisterController;
 import database.FakeDatabase;
 import database.IDatabase;
 import model.User;
@@ -20,6 +21,7 @@ public class RegisterServlet extends HttpServlet {
 	
 	DerbyDatabase db = new DerbyDatabase();
 	ArrayList<User> result = new ArrayList();
+	RegisterController controller = new RegisterController();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -39,6 +41,12 @@ public class RegisterServlet extends HttpServlet {
         //db.insertUser(username, password, email);
         
         //response.sendRedirect("index");
+        
+        if(!controller.validateCredentials(username, password, password2, email)) {
+        	request.setAttribute("error", "Invalid Credentials!");
+			request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
+        }
+        	
         
         if (username.isEmpty() == false && password.isEmpty() == false && email.isEmpty() == false) {
         	if (!db.findAllUsers().contains(username)) {
