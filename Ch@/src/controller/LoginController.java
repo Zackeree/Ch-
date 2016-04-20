@@ -1,19 +1,26 @@
 package controller;
 
 import model.Library;
+import model.User;
+import persist.DerbyDatabase;
 
 public class LoginController {
-	private Library model = null;
 	
-	public LoginController(Library model) {
-		this.model = model;
+	private String errorMessage;
+	private User model;
+	DerbyDatabase db = new DerbyDatabase();
+	
+	public LoginController() {
+		model = new User(null, null, null);
 	}
 	
-	public boolean checkUserName(String name) {
-		return model.validateUserName(name);
+	public String getError() {
+		
+		return "";
 	}
 	
-	public boolean validateCredentials(String name, String pw) {
-		return model.validatePW(name, pw);
+	public boolean validateCredentials() {
+		
+		return true;
 	}
 }

@@ -28,7 +28,6 @@ public class RegisterController {
 			errorMessage = "Your email is not valid.";
 			return errorMessage;
 		}
-		//TODO: this is not checking properly. It needs to check a User object.
 		if(db.userAlreadyExists(username) == 1){
 			errorMessage = "That username is already taken.";
 			return errorMessage;
