@@ -45,7 +45,6 @@ public class RegisterServlet extends HttpServlet {
         	request.setAttribute("error", errorMessage);
 			request.getRequestDispatcher("/_view/register.jsp").forward(request, response);
         }
-        
         else {
         	controller.registerUser(username, password, email);
         	response.sendRedirect("index");
