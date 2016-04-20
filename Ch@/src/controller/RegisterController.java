@@ -28,14 +28,14 @@ public class RegisterController {
 			errorMessage = "Your email is not valid.";
 			return errorMessage;
 		}
-		
+		//TODO: this is not checking properly. It needs to check a User object.
 		if(db.findAllUsers().contains(username)){
 			errorMessage = "That username is already taken.";
 			return errorMessage;
 		}
 		
 		else 
-			return this.errorMessage;
+			return "";
 	}
 
 	public boolean validateCredentials(String username, String password, String password2, String email) {
