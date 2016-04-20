@@ -183,7 +183,7 @@ public class DerbyDatabase implements IDatabase {
 	
 	
 	// transaction that retrieves all Authors in Library
-	@Override
+	@Override //TODO:
 	public List<Author> findAllAuthors() {
 		return executeTransaction(new Transaction<List<Author>>() {
 			@Override
@@ -989,7 +989,7 @@ public class DerbyDatabase implements IDatabase {
 						found = true;
 						
 						User user = new User(null, null, null);
-						loadUser(user, resultSet, 1);
+						user.setID(resultSet.getString(1));
 						
 						result.add(user);
 					}

@@ -9,6 +9,10 @@ public class RegisterController {
 	private User model;
 	DerbyDatabase db = new DerbyDatabase();
 	
+	public RegisterController() {
+		model = new User(null, null, null);
+	}
+	
 	public String getError(String username, String password, String password2, String email) {
 		if(username.isEmpty()||password.isEmpty()||password2.isEmpty()||email.isEmpty()) {
 			errorMessage = "One or more fields is empty.";
