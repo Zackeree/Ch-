@@ -29,7 +29,7 @@ public class RegisterController {
 			return errorMessage;
 		}
 		//TODO: this is not checking properly. It needs to check a User object.
-		if(db.findAllUsers().contains(username)){
+		if(db.userAlreadyExists(username) == 1){
 			errorMessage = "That username is already taken.";
 			return errorMessage;
 		}

@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.FakeDatabase;
 import model.User;
+import persist.DerbyDatabase;
 
 public class LoginServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
+	//DerbyDatabase db = new DerbyDatabase();
 	String id;
 	
     @Override
