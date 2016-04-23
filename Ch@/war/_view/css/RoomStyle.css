@@ -104,7 +104,7 @@ body {
 	color #333;
 }
 
-.chatContainer > .chatMessages {
+.chatContainer > #chatMessages {
 	height: 480px;
 	border-bottom: 1px solid #dddd;
 	overflow-y: scroll;

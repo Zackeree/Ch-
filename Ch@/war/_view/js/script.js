@@ -6,3 +6,10 @@ $(function() {
             return false;
     });
 });
+
+
+function auto_load(){
+    $("#chatMessages").load(location.href + " #chatMessages");
+};
+
+setInterval(auto_load, 1000);

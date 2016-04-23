@@ -5,7 +5,8 @@
 	<head>
 		<title>Chat Away!</title>
 		<link rel='stylesheet' type='text/css' href='_view/css/RoomStyle.css'/>
-	
+		<script src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+		<script type="text/javascript" src="_view/js/script.js"></script>
 	</head>
 	
 	<body>
@@ -21,29 +22,26 @@
 		<div class='chatHeader'>
 			<h2>Welcome, Chat Away!</h2> <!-- Display users name/chat rooms name here -->
 		</div>
-		<div class='chatMessages'>
-		
+		<div id='chatMessages'>
 		<ul>
 		<c:forEach items="${messages}" var="message">
 			<li>
 			<p style="text-align: left;">
-				${message.text}<br>
+				${message.text}
 			<span style="float:right;">
-				${message.time}
+				${message.time}<br>
 			</span>
 			</p>
 			</li>
 		</c:forEach>
 		</ul>
-		
 		</div>
 		<!-- <span class="messages">${messages}</span><br><br>  -->
 		
 		<div class='chatBottom'>
 			<form action="${pageContext.servletContext.contextPath}/rooms" method='post'>
-				
 				<input type='text' name='text' id='text' value='' placeholder='type your chat message' />
-				<input type='submit' name='submit' value='Post' />
+				<input type='submit' name='submit' value='Send' />
 			</form>
 		</div>
 	</div>
