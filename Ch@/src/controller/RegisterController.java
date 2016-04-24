@@ -38,13 +38,10 @@ public class RegisterController {
 	}
 
 	public boolean validateCredentials(String username, String password, String password2, String email) {
-		if(errorMessage.equals("One or more fields is empty."))
-			return false;
-		if(errorMessage.equals("Your passwords do not match."))
-			return false;
-		if(errorMessage.equals("Your email is not valid."))
-			return false;
-		if(errorMessage.equals("That username is already taken."))
+		if(errorMessage.equals("One or more fields is empty.") ||
+		   errorMessage.equals("That username is already taken.") ||
+		   errorMessage.equals("Your passwords do not match.") || 
+		   errorMessage.equals("Your email is not valid."))
 			return false;
 		else
 			return true;
