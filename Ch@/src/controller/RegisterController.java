@@ -15,22 +15,18 @@ public class RegisterController {
 	
 	public String getError(String username, String password, String password2, String email) {
 		if(username.isEmpty()||password.isEmpty()||password2.isEmpty()||email.isEmpty()) {
-			errorMessage = "One or more fields is empty.";
-			return errorMessage;
+			return "One or more fields is empty.";
 		}
 		
 		if(!password.equals(password2)) {
-			errorMessage = "Your passwords do not match.";
-			return errorMessage;
+			return "Your passwords do not match.";
 		}
 		
 		if(!model.validateEmail(email)){
-			errorMessage = "Your email is not valid.";
-			return errorMessage;
+			return "Your email is not valid.";
 		}
 		if(db.userAlreadyExists(username) == 1){
-			errorMessage = "That username is already taken.";
-			return errorMessage;
+			return "That username is already taken.";
 		}
 		
 		else 

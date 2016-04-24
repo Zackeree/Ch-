@@ -14,13 +14,23 @@ public class LoginController {
 		model = new User(null, null, null);
 	}
 	
-	public String getError() {
-		
+	public String getError(String username, String password) {
+		if (db.userAlreadyExists(username) == 1) {
+        	model = db.retrieveUser(username);
+        	if(!password.equals(model.getPassword())){
+        		return "Invalid username or password.";
+        	}
+		}
+		else {
+			return "Invalid username or password.";
+		}
 		return "";
 	}
 	
-	public boolean validateCredentials() {
-		
-		return true;
+	public boolean validateCredentials(String message) {
+		if(message == "Invalid username or password.")
+			return false;
+		else
+			return true;
 	}
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.LoginController;
 import database.FakeDatabase;
 import model.User;
 import persist.DerbyDatabase;
@@ -18,7 +19,13 @@ public class LoginServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
 	DerbyDatabase db2 = new DerbyDatabase();
-	private String id;
+	LoginController controller = new LoginController();
+	private String id, errorMessage;
+	private User model;
+	
+	public LoginServlet() {
+		//model = new User(null,null,null);
+	}
 	
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,37 +44,14 @@ public class LoginServlet extends HttpServlet {
         
         this.id = username;
         
-        // Make sure that username is in the database
-        if (db2.userAlreadyExists(username) == 1) {
-        	User user2 = db2.retrieveUser(username);
-        	if (password.equals(user2.getPassword())) {
-        		request.getSession().setAttribute("id", user2.getID());
-	            response.sendRedirect("index");
-        	}
-        	else {
-        		request.setAttribute("error", "Invalid password, try again");
-	            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
-        	}
+        errorMessage = controller.getError(username, password);
+        if(!controller.validateCredentials(errorMessage)) {
+        	request.setAttribute("error", errorMessage);
+        	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         }
         else {
-        	request.setAttribute("error", "Unknown user, please try again");
-            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
+        	request.getSession().setAttribute("id", username);
+            response.sendRedirect("index");
         }
-        /*
-        if (db.retrieveUser(username) != null) {
-	        User user = db.retrieveUser(username);
-	        if (db.validate(user.getID(), password)){
-	        	request.getSession().setAttribute("id", user.getID());
-	            response.sendRedirect("index");
-	        }
-	        else { 
-	        	request.setAttribute("error", "Invalid password, try again");
-	            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
-	        }
-        }
-        else {
-        	request.setAttribute("error", "Unknown user, please try again");
-            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
-        }*/
 	}
 }
