@@ -9,7 +9,6 @@
 	</head>
 	
 	<body>
-	<span style="cursor:help">
 		<div id="Title">
 			<h1><center>
 			You have successfully logged in!
@@ -45,6 +44,5 @@
 		<div id="Credits">
 			<h5><center>Created by: Brandon Longenecker and Zackeree Henry</center></h5>
 		</div>
-	</span>
 	</body>
 </html>

@@ -12,7 +12,6 @@
 	</head>
 	
 	<body>
-	<span style="cursor:help">
 		<div id="Title">
 			<h1><center>Login to your Account:</center></h1>
 		</div>
@@ -58,6 +57,5 @@
 		<div id="Credits">
 			<h5><center>Created by: Brandon Longenecker and Zackeree Henry</center></h5>
 		</div>
-	</span>
 	</body>
 </html>

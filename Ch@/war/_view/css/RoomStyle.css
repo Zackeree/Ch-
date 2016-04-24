@@ -66,7 +66,7 @@ body {
 	margin-right: auto;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-    cursor:no-drop;
+    cursor:hand;
 	border-radius: 12px;
 }
 

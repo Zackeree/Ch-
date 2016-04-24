@@ -13,7 +13,6 @@
 	</head>
 	
 	<body>
-	<span style="cursor:help">
 		<div id="Title">
 			<h1><center>Register for an Account:</center></h1>
 		</div>
@@ -28,8 +27,8 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;
-			Password: <input type="password" maxlength="20" name="pass" class="removespace"><br>
-			Email: <input type="text" maxlength="20" name="email" class="removespace">
+			Email: <input type="text" maxlength="20" name="email" class="removespace"><br>
+			Password: <input type="password" maxlength="20" name="pass" class="removespace">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			Re-Enter Password: <input type="password" maxlength="20" name="pass2" class="removespace"><br>
 			</p>
@@ -57,6 +56,5 @@
 		<div id="Credits">
 			<h5><center>Created by: Brandon Longenecker and Zackeree Henry</center></h5>
 		</div>
-	</span>
 	</body>
 </html>

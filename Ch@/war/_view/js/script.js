@@ -23,7 +23,6 @@ function updateScroll(){
 
 function auto_load(){
     $("#chatMessages").load(location.href + " #chatMessages");
-    var scroll = document.getElementById("chatMessages");
     updateScroll();
 }
 
