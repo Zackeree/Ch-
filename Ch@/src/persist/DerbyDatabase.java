@@ -1066,6 +1066,58 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 
+	@Override
+	public User retrieveUser(final String username) {
+		return executeTransaction(new Transaction<User>() {
+			@Override
+			public User execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				User user = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from users " + 
+							"where username = ?"
+							);
+					stmt.setString(1, username);
+					
+					List<User> result = new ArrayList<User>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						user = new User(null, null, null);
+						user.setUserIDNum(resultSet.getInt(1));
+						user.setID(resultSet.getString(2));
+						//System.out.println(user.getID());
+						user.setPassword(resultSet.getString(3));
+						//System.out.println(user.getPassword());
+						user.setEmail(resultSet.getString(4));
+						//System.out.println(user.getEmail());
+						
+						
+						result.add(user);
+					}
+					
+					// check if any users were found
+					if (!found) {
+						System.out.println("No users were found in the database");
+					}
+					
+					return user;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 
 	@Override
 	public List<Pair<Message,Room>> findMessageByRoom() {

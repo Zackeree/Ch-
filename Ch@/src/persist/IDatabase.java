@@ -18,4 +18,5 @@ public interface IDatabase {
 	public List<Author> removeBookByTitle(String title);
 	public List<User> findAllUsers();
 	public List<Pair<Message, Room>> findMessageByRoom();
+	public User retrieveUser(String username);
 }

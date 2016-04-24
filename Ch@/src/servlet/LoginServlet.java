@@ -17,7 +17,7 @@ import persist.DerbyDatabase;
 public class LoginServlet extends HttpServlet {
 	
 	FakeDatabase db = new FakeDatabase();
-	//DerbyDatabase db = new DerbyDatabase();
+	DerbyDatabase db2 = new DerbyDatabase();
 	private String id;
 	
     @Override
@@ -37,6 +37,23 @@ public class LoginServlet extends HttpServlet {
         
         this.id = username;
         
+        // Make sure that username is in the database
+        if (db2.userAlreadyExists(username) == 1) {
+        	User user2 = db2.retrieveUser(username);
+        	if (password.equals(user2.getPassword())) {
+        		request.getSession().setAttribute("id", user2.getID());
+	            response.sendRedirect("index");
+        	}
+        	else {
+        		request.setAttribute("error", "Invalid password, try again");
+	            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
+        	}
+        }
+        else {
+        	request.setAttribute("error", "Unknown user, please try again");
+            request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
+        }
+        /*
         if (db.retrieveUser(username) != null) {
 	        User user = db.retrieveUser(username);
 	        if (db.validate(user.getID(), password)){
@@ -51,6 +68,6 @@ public class LoginServlet extends HttpServlet {
         else {
         	request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
-        }
+        }*/
 	}
 }

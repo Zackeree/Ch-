@@ -190,4 +190,10 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public User retrieveUser(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
