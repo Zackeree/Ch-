@@ -42,6 +42,12 @@
 			<form action="${pageContext.servletContext.contextPath}/rooms" method='post'>
 				<input type='text' name='text' id='text' value='' placeholder='type your chat message' />
 				<input type='submit' name='submit' value='Send' />
+				
+				<script>
+				var scroll = document.getElementById("chatMessages");
+				scroll.scrollTop = scroll.scrollHeight;
+				</script>
+				
 			</form>
 		</div>
 	</div>
