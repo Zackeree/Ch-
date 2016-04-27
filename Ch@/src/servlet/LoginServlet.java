@@ -52,10 +52,16 @@ public class LoginServlet extends HttpServlet {
         	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         }
         else {
-        	model = new User(username, password, "fake@email.com");
-        	session.setAttribute("user", model);
-        	session.setAttribute("status", "Logged In!");
-            response.sendRedirect("index");
+        	model = db.retrieveUser(username);
+        	if (session.getAttribute("user") == model) {
+        		request.setAttribute("error", "User is already logged in!");
+            	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
+        	}
+        	else {
+	        	session.setAttribute("user", model);
+	        	session.setAttribute("status", "Logged In!");
+	            response.sendRedirect("index");
+        	}
         }
 	}
 }

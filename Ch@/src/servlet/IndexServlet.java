@@ -21,18 +21,27 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		String username = req.getParameter("id");
 		HttpSession session = req.getSession(true);
 		System.out.println("In the Index servlet");
 		
-		Object fakeUser = session.getAttribute("user");
-		User user = User.class.cast(fakeUser);
-		Object fakeStatus = session.getAttribute("status");
-		String status = String.class.cast(fakeStatus);
-		req.setAttribute("username", user.getID());
-		req.setAttribute("status", status);
-		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+		Object objUser = session.getAttribute("user");
 		
+		if (objUser == null) {
+			req.setAttribute("error", "You must be logged in first!");
+        	req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		}
+		
+		else {
+		
+			User user = User.class.cast(objUser);
+			
+			Object fakeStatus = session.getAttribute("status");
+			String status = String.class.cast(fakeStatus);
+			
+			req.setAttribute("username", user.getID());
+			req.setAttribute("status", status);
+			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+		}
 	}
 
 

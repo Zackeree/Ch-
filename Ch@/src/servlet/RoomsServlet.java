@@ -22,9 +22,20 @@ public class RoomsServlet extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-    	ArrayList<Message> messageList = db.retrieveMessages();
-    	req.setAttribute("messages", messageList);
-		req.getRequestDispatcher("/_view/rooms.jsp").forward(req, resp);
+    	
+    	
+    	HttpSession session = req.getSession(true);
+    	Object objUser = session.getAttribute("user");
+    	if (objUser == null) {
+			req.setAttribute("error", "You must be logged in first!");
+        	req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		}
+		
+		else {
+			ArrayList<Message> messageList = db.retrieveMessages();
+			req.setAttribute("messages", messageList);
+			req.getRequestDispatcher("/_view/rooms.jsp").forward(req, resp);
+		}
 	}
     
     @Override
@@ -38,14 +49,12 @@ public class RoomsServlet extends HttpServlet {
     	db.addMessage(message.getValidatedMessage());
     	HttpSession session = request.getSession(true);
     	
-    	Object user = session.getAttribute("user");
-		User realUser = User.class.cast(user);
-		
-		request.setAttribute("username", realUser.getID());
-    	request.setAttribute("messages", messageList);
-    	request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);
-    	
+    	Object objUser = session.getAttribute("user");
+		User user = User.class.cast(objUser);
+			
+		request.setAttribute("username", user.getID());
+	    request.setAttribute("messages", messageList);
+	    request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);
+	    
     }
-    
-    
 }
