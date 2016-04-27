@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 import servlet.LoginServlet;
@@ -19,11 +20,17 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String username = req.getParameter("id");
 		
+		String username = req.getParameter("id");
+		HttpSession session = req.getSession(true);
 		System.out.println("In the Index servlet");
 		
-		req.setAttribute("user", username);
+		Object fakeUser = session.getAttribute("user");
+		User user = User.class.cast(fakeUser);
+		Object fakeStatus = session.getAttribute("status");
+		String status = String.class.cast(fakeStatus);
+		req.setAttribute("username", user.getID());
+		req.setAttribute("status", status);
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		
 	}

@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.RegisterController;
 import database.FakeDatabase;
@@ -38,7 +39,8 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         
         model = new User(username, password, email);
-
+        HttpSession session = request.getSession(true);
+        
         String errorMessage = controller.getError(username, password, password2, email);
         
         if(!controller.validateCredentials(username, password, password2, email)) {
@@ -47,6 +49,8 @@ public class RegisterServlet extends HttpServlet {
         }
         else {
         	controller.registerUser(username, password, email);
+        	session.setAttribute("user", model);
+        	session.setAttribute("status", "Registered!");
         	response.sendRedirect("index");
         }
 	}

@@ -109,6 +109,12 @@ public class User {
 	public void blockUser(User model) {
 		
 	}
+
+	@Override
+	public String toString() {
+		return "User [userIdNum=" + userIdNum + ", id=" + id + ", password=" + password + ", email=" + email
+				+ ", infraction=" + infraction + ", admin=" + admin + ", room=" + room + "]";
+	}
 	
 	/* following methods are NOT properly implemented, and require admin privileges** 
 	public void banUser(User model, int time) {

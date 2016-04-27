@@ -11,16 +11,13 @@
 	<body>
 		<div id="Title">
 			<h1><center>
-			You have successfully logged in!
-			</center></h1>
-		</div>
-		
-		<div id="Content">
-			<center>
 			<form action="${pageContext.servletContext.contextPath}/index" method="get">
-			<span class="user">${user}</span>
+			Welcome,
+			${username}!
+			You Have Sucessfuly 
+			${status}
 			</form>
-			</center>
+			</center></h1>
 		</div>
 		
 		<div id="Content">

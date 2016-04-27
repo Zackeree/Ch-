@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.LoginController;
 import database.FakeDatabase;
@@ -43,6 +44,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("pass");
         
         this.id = username;
+        HttpSession session = request.getSession(true);
         
         errorMessage = controller.getError(username, password);
         if(!controller.validateCredentials(errorMessage)) {
@@ -50,7 +52,9 @@ public class LoginServlet extends HttpServlet {
         	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         }
         else {
-        	request.getSession().setAttribute("id", username);
+        	model = new User(username, password, "fake@email.com");
+        	session.setAttribute("user", model);
+        	session.setAttribute("status", "Logged In!");
             response.sendRedirect("index");
         }
 	}

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import database.FakeDatabase;
 import database.IDatabase;
@@ -32,12 +33,15 @@ public class RoomsServlet extends HttpServlet {
     	String input = request.getParameter("text");
     	
     	ArrayList<Message> messageList = db.retrieveMessages();
-    	
     	Message message = new Message(input);
     	
-    	
     	db.addMessage(message.getValidatedMessage());
+    	HttpSession session = request.getSession(true);
     	
+    	Object user = session.getAttribute("user");
+		User realUser = User.class.cast(user);
+		
+		request.setAttribute("username", realUser.getID());
     	request.setAttribute("messages", messageList);
     	request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);
     	
