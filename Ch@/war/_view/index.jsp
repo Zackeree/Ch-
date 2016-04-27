@@ -30,9 +30,11 @@
 		
 		<div id="Content">
 			<center><a href="/home/">
+			<form action="${pageContext.servletContext.contextPath}/index" method="post">
 			<button class="button button1">
 			<h2>Logout</h2>
 			</button>
+			</form>
 			</a></center>
 		</div>
 		

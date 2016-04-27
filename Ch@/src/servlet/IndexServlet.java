@@ -34,6 +34,16 @@ public class IndexServlet extends HttpServlet {
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		
 	}
+
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession(true);
+		session.invalidate();
+		response.sendRedirect("/home/");
+	}
 }
 
 /*
