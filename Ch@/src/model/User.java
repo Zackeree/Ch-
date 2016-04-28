@@ -116,6 +116,16 @@ public class User {
 				+ ", infraction=" + infraction + ", admin=" + admin + ", room=" + room + "]";
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		
+		if (!(o instanceof User)){
+			return false;
+		}
+		
+		return ((User)o).getID().equals(id);
+	}
+	
 	/* following methods are NOT properly implemented, and require admin privileges** 
 	public void banUser(User model, int time) {
 		if(this.admin == true)

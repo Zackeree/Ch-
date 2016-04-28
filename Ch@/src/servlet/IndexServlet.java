@@ -35,8 +35,8 @@ public class IndexServlet extends HttpServlet {
 		
 			User user = User.class.cast(objUser);
 			
-			Object fakeStatus = session.getAttribute("status");
-			String status = String.class.cast(fakeStatus);
+			Object objStatus = session.getAttribute("status");
+			String status = String.class.cast(objStatus);
 			
 			req.setAttribute("username", user.getID());
 			req.setAttribute("status", status);

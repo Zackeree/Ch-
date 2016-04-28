@@ -53,7 +53,18 @@ public class LoginServlet extends HttpServlet {
         }
         else {
         	model = db2.retrieveUser(username);
-        	if (session.getAttribute("user") == model) {
+        	System.out.print("model is: " + model);
+        	System.out.print("user is: " + session.getAttribute("user"));
+        	
+        	Object objCurrent = session.getAttribute("user");
+			User current = User.class.cast(objCurrent);
+			
+        	if (current == null) {
+        		session.setAttribute("user", model);
+	        	session.setAttribute("status", "Logged In!");
+	            response.sendRedirect("index");
+        	}
+        	else if (current.equals(model)) {
         		request.setAttribute("error", "User is already logged in!");
             	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         	}
