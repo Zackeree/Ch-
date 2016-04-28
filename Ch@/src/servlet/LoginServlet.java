@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
         	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
         }
         else {
-        	model = db.retrieveUser(username);
+        	model = db2.retrieveUser(username);
         	if (session.getAttribute("user") == model) {
         		request.setAttribute("error", "User is already logged in!");
             	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
