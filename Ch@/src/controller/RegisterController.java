@@ -33,8 +33,10 @@ public class RegisterController {
 			return errorMessage;
 		}
 		
-		else 
+		else { 
+			errorMessage = "";
 			return "";
+		}
 	}
 
 	public boolean validateCredentials(String username, String password, String password2, String email) {
