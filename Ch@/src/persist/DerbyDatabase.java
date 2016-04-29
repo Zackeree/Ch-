@@ -470,7 +470,7 @@ public class DerbyDatabase implements IDatabase {
 					stmt.executeUpdate();
 					
 					// execute the query, get the result
-					resultSet = stmt.executeQuery();
+					//resultSet = stmt.executeQuery();
 
 					return 1;
 				} finally {
