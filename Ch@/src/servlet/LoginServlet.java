@@ -31,12 +31,22 @@ public class LoginServlet extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-    	String shared = "shared";
-        request.setAttribute("sharedId", shared); // add to request
-        request.getSession().setAttribute("sharedId", shared); // add to session
-        this.getServletConfig().getServletContext().setAttribute("sharedId", shared); // add to application context
-		request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
-	}
+    	
+    	 HttpSession session = request.getSession(true);
+         
+         Object logStatus = session.getAttribute("status");
+         
+         if (logStatus != null) {
+        	 response.sendRedirect("index");
+         }
+         else {
+	    	String shared = "shared";
+	        request.setAttribute("sharedId", shared); // add to request
+	        request.getSession().setAttribute("sharedId", shared); // add to session
+	        this.getServletConfig().getServletContext().setAttribute("sharedId", shared); // add to application context
+			request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
+         }
+    }
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,6 +55,8 @@ public class LoginServlet extends HttpServlet {
         
         this.id = username;
         HttpSession session = request.getSession(true);
+        
+        Object logStatus = session.getAttribute("status");
         
         errorMessage = controller.getError(username, password);
         if(!controller.validateCredentials(errorMessage)) {

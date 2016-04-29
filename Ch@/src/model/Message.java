@@ -16,7 +16,7 @@ public class Message {
 	}
 
 	public Message getValidatedMessage() {
-		this.text = this.text.toLowerCase().replaceAll("damn", "****");
+		//this.text = this.text.toLowerCase().replaceAll("damn", "****");
 		return this;
 	}
 

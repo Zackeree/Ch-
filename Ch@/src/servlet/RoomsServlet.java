@@ -45,18 +45,22 @@ public class RoomsServlet extends HttpServlet {
 			throws ServletException, IOException {
     	String input = request.getParameter("text");
     	
-    	ArrayList<Message> messageList = db.retrieveMessages();
-    	Message message = new Message(input);
-    	
-    	db.insertMessage(message.getValidatedMessage());
-    	HttpSession session = request.getSession(true);
-    	
-    	Object objUser = session.getAttribute("user");
-		User user = User.class.cast(objUser);
-			
-		request.setAttribute("username", user.getID());
-	    request.setAttribute("messages", messageList);
-	    request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);
-	    
+    	if (input != "") {
+	    	ArrayList<Message> messageList = db.retrieveMessages();
+	    	Message message = new Message(input);
+	    	
+	    	db.insertMessage(message.getValidatedMessage());
+	    	HttpSession session = request.getSession(true);
+	    	
+	    	Object objUser = session.getAttribute("user");
+			User user = User.class.cast(objUser);
+				
+			request.setAttribute("username", user.getID());
+		    request.setAttribute("messages", messageList);
+		    request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);
+    	}
+    	else {
+    		request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);
+    	}
     }
 }
