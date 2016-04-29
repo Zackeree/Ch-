@@ -40,6 +40,7 @@ public class IndexServlet extends HttpServlet {
 			
 			// Removes Sucessfully Logged in!/Regstered! if user views rooms
 			String url = req.getHeader("referer");
+			
 			if (url.contains("room")){
 				req.setAttribute("username", user.getID());
 				req.setAttribute("status", "");

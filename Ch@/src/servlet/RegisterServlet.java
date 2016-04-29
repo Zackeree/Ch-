@@ -33,6 +33,7 @@ public class RegisterServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
         String username = request.getParameter("id");
         String password = request.getParameter("pass");
         String password2 = request.getParameter("pass2");

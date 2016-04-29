@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         
         errorMessage = controller.getError(username, password);
+        
         if(!controller.validateCredentials(errorMessage)) {
         	request.setAttribute("error", errorMessage);
         	request.getRequestDispatcher("/_view/login.jsp").forward(request, response);
