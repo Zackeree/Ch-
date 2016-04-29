@@ -395,20 +395,12 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public Integer execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
-				PreparedStatement stmt2 = null;
-				PreparedStatement stmt3 = null;
-				PreparedStatement stmt4 = null;
-				PreparedStatement stmt5 = null;
-				PreparedStatement stmt6 = null;				
+				PreparedStatement stmt2 = null;			
 				
 				ResultSet resultSet1 = null;
 				ResultSet resultSet2 = null;
-				ResultSet resultSet3 = null;
-//	(unused)	ResultSet resultSet4 = null;
-				ResultSet resultSet5 = null;				
-//	(unused)	ResultSet resultSet6 = null;
 				
-				// for saving author ID and book ID
+				// not even sure anymore
 				Integer user_id = -1;
 
 				//  make sure username doesn't already exist
@@ -454,14 +446,6 @@ public class DerbyDatabase implements IDatabase {
 					DBUtil.closeQuietly(stmt1);
 					DBUtil.closeQuietly(resultSet2);
 					DBUtil.closeQuietly(stmt2);					
-					DBUtil.closeQuietly(resultSet3);
-					DBUtil.closeQuietly(stmt3);					
-// (unused)			DBUtil.closeQuietly(resultSet4);
-					DBUtil.closeQuietly(stmt4);
-					DBUtil.closeQuietly(resultSet5);
-					DBUtil.closeQuietly(stmt5);
-// (unused)			DBUtil.closeQuietly(resultSet6);
-					DBUtil.closeQuietly(stmt6);
 				}
 			}
 		});
