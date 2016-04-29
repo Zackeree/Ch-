@@ -1211,4 +1211,45 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+	
+	public String findMessageByID(final int id) {
+		return executeTransaction(new Transaction<String>() {
+			@Override
+			public String execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				String message = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select messages.message_text* " +
+							"  from messages " +
+							"  where messages.message_id = ? "
+					);
+					stmt.setInt(1, id);
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						message = resultSet.getString(1);
+					}
+					
+					// check if any users were found
+					if (!found) {
+						System.out.println("No message exists with that ID");
+					}
+					
+					return message;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 }
