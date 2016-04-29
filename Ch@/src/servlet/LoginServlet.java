@@ -56,8 +56,6 @@ public class LoginServlet extends HttpServlet {
         this.id = username;
         HttpSession session = request.getSession(true);
         
-        Object logStatus = session.getAttribute("status");
-        
         errorMessage = controller.getError(username, password);
         if(!controller.validateCredentials(errorMessage)) {
         	request.setAttribute("error", errorMessage);
@@ -71,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 			
         	if (current == null) {
         		session.setAttribute("user", model);
-	        	session.setAttribute("status", "Logged In!");
+	        	session.setAttribute("status", "You Have Sucessfully Logged In!");
 	            response.sendRedirect("index");
         	}
         	else if (current.equals(model)) {

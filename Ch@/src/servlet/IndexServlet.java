@@ -38,9 +38,18 @@ public class IndexServlet extends HttpServlet {
 			Object objStatus = session.getAttribute("status");
 			String status = String.class.cast(objStatus);
 			
-			req.setAttribute("username", user.getID());
-			req.setAttribute("status", status);
-			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+			// Removes Sucessfully Logged in!/Regstered! if user views rooms
+			String url = req.getHeader("referer");
+			if (url.contains("room")){
+				req.setAttribute("username", user.getID());
+				req.setAttribute("status", "");
+				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+			}
+			else {
+				req.setAttribute("username", user.getID());
+				req.setAttribute("status", status);
+				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+			}
 		}
 	}
 

@@ -62,7 +62,7 @@
 	
 	<div id="Content">
 		<center><a href="index">
-		<button class="button button1",>
+		<button class="button button1">
 		<h2>Go Back</h2>
 		</button>
 		</a></center>

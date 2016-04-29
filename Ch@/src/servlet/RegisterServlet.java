@@ -50,7 +50,7 @@ public class RegisterServlet extends HttpServlet {
         else {
         	controller.registerUser(username, password, email);
         	session.setAttribute("user", model);
-        	session.setAttribute("status", "Registered!");
+        	session.setAttribute("status", "You Have Sucessfully Registered!");
         	response.sendRedirect("index");
         }
 	}
