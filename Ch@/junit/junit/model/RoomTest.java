@@ -69,7 +69,7 @@ public class RoomTest {
 	@Test
 	public void testKick() {
 		model2.Kick(uModel2);
-		
+		System.out.println("after: " + model2.getUsers());
 		assertFalse(model2.getUsers().contains(uModel2));
 	}
 	

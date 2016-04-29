@@ -6,6 +6,11 @@ public class Lobby {
 	private ArrayList<Room> rooms;
 	private ArrayList<User> users;
 	
+	public Lobby(ArrayList<Room> rooms) {
+		this.rooms = rooms;
+		this.users = new ArrayList<User>();
+	}
+	
 	public ArrayList<Room> getRooms() {
 		return this.rooms;
 	}

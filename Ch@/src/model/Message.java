@@ -37,7 +37,7 @@ public class Message {
 	}
 
 	public String getTime() {
-		return time;
+		return time;	
 	}
 
 	public void setTime(String time) {
