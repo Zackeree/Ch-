@@ -1146,7 +1146,7 @@ public class DerbyDatabase implements IDatabase {
 				
 				try {
 					stmt = conn.prepareStatement(
-							"select messages.message_text from messages "
+							"select messages.message_text, messages.message_time from messages"
 							);
 					
 					ArrayList<Message> result = new ArrayList<Message>();
@@ -1161,6 +1161,7 @@ public class DerbyDatabase implements IDatabase {
 						
 						message = new Message(null);
 						message.setText(resultSet.getString(1));
+						message.setTime(resultSet.getString(2));
 						
 						result.add(message);
 					}
