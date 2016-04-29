@@ -14,7 +14,11 @@
 	<center>
 	
 	<div id="Title">
-	<h1><center>You Have Joined -room name-</center></h1>
+	<h1><center>
+	You Have Joined 
+	SpamFest
+	!
+	</center></h1>
 	</div>
 	
 	<div id="Content">
@@ -27,7 +31,7 @@
 		<c:forEach items="${messages}" var="message">
 			<li>
 			<p style="text-align: left;">
-				-Insert Username-:
+				
 				${message.text}
 			<span style="float:right;">
 				${message.time}<br>

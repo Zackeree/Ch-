@@ -21,11 +21,23 @@
 		</div>
 		
 		<div id="Content">
+		<h2><center>
+		Select a room to join:
+		</center></h2>
+		</div>
+		
+		<div id="Content">
 			<center><a href="rooms">
 			<button class="button button1">
-			<h2>Join a Room!</h2>
+			<h2>SpamFest</h2>
 			</button>
 			</a></center>
+		</div>
+		
+		<div id="Content">
+		<h2><center>
+		End your current session:
+		</center></h2>
 		</div>
 		
 		<div id="Content">
@@ -37,8 +49,6 @@
 			</form>
 			</a></center>
 		</div>
-		
-		<div id="Filler"></div>
 		
 		<div id="Credits">
 			<h5><center>Created by: Brandon Longenecker and Zackeree Henry</center></h5>

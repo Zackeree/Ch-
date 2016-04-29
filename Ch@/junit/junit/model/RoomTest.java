@@ -63,6 +63,7 @@ public class RoomTest {
 		
 		assertTrue(model.getUsers().contains(uModel));
 		assertTrue(model2.getUsers().contains(uModel2));
+		assertFalse(model.getUsers().contains(uModel2));
 	}
 	
 	@Test
@@ -133,8 +134,8 @@ public class RoomTest {
 
 	@Test
 	public void testGetOwner() {
-		assertEquals(uModel, model.getOwner());
-		assertEquals(uModel2, model2.getOwner());
+		assertEquals(uModel.toString(), model.getOwner().toString());
+		assertEquals(uModel2.toString(), model2.getOwner().toString());
 	}
 
 	@Test
@@ -142,7 +143,7 @@ public class RoomTest {
 		model.setOwner(uModel2);
 		model2.setOwner(uModel);
 		
-		assertEquals(uModel2, model.getOwner());
-		assertEquals(uModel, model2.getOwner());
+		assertEquals(uModel2.toString(), model.getOwner().toString());
+		assertEquals(uModel.toString(), model2.getOwner().toString());
 	}
 }

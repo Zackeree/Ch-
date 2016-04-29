@@ -27,7 +27,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;
-			Email: <input type="text" maxlength="20" name="email" class="removespace"><br>
+			Email: <input type="text" maxlength="50" name="email" class="removespace"><br>
 			Password: <input type="password" maxlength="20" name="pass" class="removespace">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			Re-Enter Password: <input type="password" maxlength="20" name="pass2" class="removespace"><br>
