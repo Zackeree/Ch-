@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.RoomsController;
 import database.FakeDatabase;
 import database.IDatabase;
 import model.Message;
@@ -18,8 +19,8 @@ import servlet.LoginServlet;
 
 public class RoomsServlet extends HttpServlet {
 	
-	//FakeDatabase db = new FakeDatabase();
 	DerbyDatabase db = new DerbyDatabase();
+	RoomsController controller = new RoomsController();
 	
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -34,8 +35,8 @@ public class RoomsServlet extends HttpServlet {
 		}
 		
 		else {
-			ArrayList<Message> messageList = db.retrieveMessages();
-			req.setAttribute("messages", messageList);
+			//ArrayList<Message> messageList = db.retrieveMessages();
+			req.setAttribute("messages", controller.getMessages());
 			req.getRequestDispatcher("/_view/rooms.jsp").forward(req, resp);
 		}
 	}
@@ -46,17 +47,16 @@ public class RoomsServlet extends HttpServlet {
     	String input = request.getParameter("text");
     	
     	if (input != "") {
-	    	ArrayList<Message> messageList = db.retrieveMessages();
 	    	Message message = new Message(input);
 	    	
-	    	db.insertMessage(message.getValidatedMessage());
+	    	controller.addMessage(message);
 	    	HttpSession session = request.getSession(true);
 	    	
 	    	Object objUser = session.getAttribute("user");
 			User user = User.class.cast(objUser);
 				
 			request.setAttribute("username", user.getID());
-		    request.setAttribute("messages", messageList);
+		    request.setAttribute("messages", controller.getMessages());
 		    request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);
     	}
     	else {
