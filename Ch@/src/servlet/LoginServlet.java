@@ -53,8 +53,6 @@ public class LoginServlet extends HttpServlet {
         }
         else {
         	model = db2.retrieveUser(username);
-        	System.out.print("model is: " + model);
-        	System.out.print("user is: " + session.getAttribute("user"));
         	
         	Object objCurrent = session.getAttribute("user");
 			User current = User.class.cast(objCurrent);

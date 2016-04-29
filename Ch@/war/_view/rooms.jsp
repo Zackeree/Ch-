@@ -23,10 +23,11 @@
 			<h2>Welcome, Chat Away!</h2> <!-- Display users name/chat rooms name here -->
 		</div>
 		<div id='chatMessages'>
-		<ul>
+		<ul style ="list-style-type:none">
 		<c:forEach items="${messages}" var="message">
 			<li>
 			<p style="text-align: left;">
+				-Insert Username-:
 				${message.text}
 			<span style="float:right;">
 				${message.time}<br>

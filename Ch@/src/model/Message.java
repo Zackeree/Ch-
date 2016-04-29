@@ -1,15 +1,18 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Message {
 	private int idNum;
 	private String text;
-	private LocalDateTime time;
-
+	private String time;
+	
 	public Message(String text) {
 		this.text = text;
-		this.time = LocalDateTime.now();
+		Date now = new Date();
+		this.time = new SimpleDateFormat("h:mm:ss a").format(now);
 	}
 
 	public Message getValidatedMessage() {
@@ -33,11 +36,11 @@ public class Message {
 		this.text = text;
 	}
 
-	public LocalDateTime getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(LocalDateTime time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	
