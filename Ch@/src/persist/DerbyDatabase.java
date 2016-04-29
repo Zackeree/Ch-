@@ -1132,6 +1132,49 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+	
+	public ArrayList<Message> retrieveMessages() {
+		return executeTransaction(new Transaction<ArrayList<Message>>() {
+			@Override
+			public ArrayList<Message> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				Message message = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select * from messages "
+							);
+					
+					ArrayList<Message> result = new ArrayList<Message>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						message = new Message(null);
+						message.setText(resultSet.getString(1));
+						
+						result.add(message);
+					}
+					
+					// check if any users were found
+					if (!found) {
+						System.out.println("Something is wrong cap'n.");
+					}
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 
 	@Override
 	public List<Pair<Message,Room>> findMessageByRoom() {
