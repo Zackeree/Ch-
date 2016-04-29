@@ -466,6 +466,36 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+	
+	public Integer insertMessage(final String text) {
+		return executeTransaction(new Transaction<Integer>() {
+			@Override
+			public Integer execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;			
+				
+				ResultSet resultSet = null;
+
+				//  make sure username doesn't already exist
+				try {
+					stmt = conn.prepareStatement(
+							"insert into messages (message_text) " +
+							" values(?)"
+					);
+					stmt.setString(1, text);
+					
+					stmt.executeUpdate();
+					
+					// execute the query, get the result
+					resultSet = stmt.executeQuery();
+
+					return 1;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 
 	public Integer userAlreadyExists(final String username) {
 		return executeTransaction(new Transaction<Integer>() {
