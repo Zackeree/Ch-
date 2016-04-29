@@ -451,7 +451,7 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
-	public Integer insertMessage(final String text) {
+	public Integer insertMessage(final Message message) {
 		return executeTransaction(new Transaction<Integer>() {
 			@Override
 			public Integer execute(Connection conn) throws SQLException {
@@ -462,10 +462,11 @@ public class DerbyDatabase implements IDatabase {
 				//  make sure username doesn't already exist
 				try {
 					stmt = conn.prepareStatement(
-							"insert into messages (message_text) " +
-							" values(?)"
+							"insert into messages (message_text, message_time) " +
+							" values(?, ?)"
 					);
-					stmt.setString(1, text);
+					stmt.setString(1, message.getText());
+					stmt.setString(2, message.getTime());
 					
 					stmt.executeUpdate();
 					
@@ -869,7 +870,8 @@ public class DerbyDatabase implements IDatabase {
 							"create table messages (" +
 							"	message_id integer primary key " +
 							"		generated always as identity (start with 1, increment by 1), " +
-							"	message_text varchar(80)" +
+							"	message_text varchar(80), " +
+							"   message_time varchar(80)" +
 							")"
 					);
 					stmt6.executeUpdate();
@@ -992,9 +994,10 @@ public class DerbyDatabase implements IDatabase {
 					System.out.println("Rooms table populated");
 					
 					// insert message
-					insertMessage = conn.prepareStatement("insert into messages (message_text) values (?)");
+					insertMessage = conn.prepareStatement("insert into messages (message_text, message_time) values (?, ?)");
 					for (Message message : mList) {
 						insertMessage.setString(1, message.getText());
+						insertMessage.setString(2, message.getTime());
 						insertMessage.addBatch();
 					}
 					insertMessage.executeBatch();

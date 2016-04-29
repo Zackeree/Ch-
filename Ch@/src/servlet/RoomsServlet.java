@@ -48,7 +48,7 @@ public class RoomsServlet extends HttpServlet {
     	ArrayList<Message> messageList = db.retrieveMessages();
     	Message message = new Message(input);
     	
-    	db.insertMessage(message.getValidatedMessage().getText());
+    	db.insertMessage(message.getValidatedMessage());
     	HttpSession session = request.getSession(true);
     	
     	Object objUser = session.getAttribute("user");

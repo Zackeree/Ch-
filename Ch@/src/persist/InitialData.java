@@ -121,6 +121,7 @@ public class InitialData {
 				
 				message.setIdNum(messageId++);
 				message.setText(i.next());
+				message.setTime(i.next());
 				messageList.add(message);
 			}
 			System.out.println("messageList loaded from CSV file");
