@@ -13,11 +13,13 @@ import database.FakeDatabase;
 import database.IDatabase;
 import model.Message;
 import model.User;
+import persist.DerbyDatabase;
 import servlet.LoginServlet;
 
 public class RoomsServlet extends HttpServlet {
 	
-	FakeDatabase db = new FakeDatabase();
+	//FakeDatabase db = new FakeDatabase();
+	DerbyDatabase db = new DerbyDatabase();
 	
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -46,7 +48,7 @@ public class RoomsServlet extends HttpServlet {
     	ArrayList<Message> messageList = db.retrieveMessages();
     	Message message = new Message(input);
     	
-    	db.addMessage(message.getValidatedMessage());
+    	db.insertMessage(message.getValidatedMessage().getText());
     	HttpSession session = request.getSession(true);
     	
     	Object objUser = session.getAttribute("user");

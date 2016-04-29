@@ -1143,7 +1143,7 @@ public class DerbyDatabase implements IDatabase {
 				
 				try {
 					stmt = conn.prepareStatement(
-							"select * from messages "
+							"select messages.message_text from messages "
 							);
 					
 					ArrayList<Message> result = new ArrayList<Message>();
