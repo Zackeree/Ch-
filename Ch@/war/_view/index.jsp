@@ -14,7 +14,7 @@
 			<form action="${pageContext.servletContext.contextPath}/index" method="get">
 			Welcome,
 			${username}!
-			You Have Sucessfuly 
+			You Have Successfully 
 			${status}
 			</form>
 			</center></h1>
