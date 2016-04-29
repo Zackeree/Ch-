@@ -1167,4 +1167,48 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+	
+	public User findUserByID(final int id) {
+		return executeTransaction(new Transaction<User>() {
+			@Override
+			public User execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				User user = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select users.* " +
+							"  from users " +
+							"  where users.id = ? "
+					);
+					stmt.setInt(1, id);
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						user = new User(null, null, null);
+						user.setID(resultSet.getString(1));
+						user.setPassword(resultSet.getString(2));
+						user.setEmail(resultSet.getString(3));
+					}
+					
+					// check if any users were found
+					if (!found) {
+						System.out.println("No users were found in the database with that ID");
+					}
+					
+					return user;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 }
