@@ -21,7 +21,7 @@ public class RoomsController {
 		return messages;
 	}
 	
-	public void addMessage(Message message) {
-		db.insertMessage(message);
+	public void addMessage(Message message, String username) {
+		db.insertMessage(message, username);
 	}
 }

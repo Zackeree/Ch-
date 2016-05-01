@@ -49,12 +49,12 @@ public class RoomsServlet extends HttpServlet {
     	if (input != "") {
 	    	Message message = new Message(input);
 	    	
-	    	controller.addMessage(message);
+	    	
 	    	HttpSession session = request.getSession(true);
 	    	
 	    	Object objUser = session.getAttribute("user");
 			User user = User.class.cast(objUser);
-				
+			controller.addMessage(message, user.getID());	
 			request.setAttribute("username", user.getID());
 		    request.setAttribute("messages", controller.getMessages());
 		    request.getRequestDispatcher("/_view/rooms.jsp").forward(request, response);

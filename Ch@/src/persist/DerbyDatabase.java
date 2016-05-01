@@ -451,7 +451,7 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
-	public Integer insertMessage(final Message message) {
+	public Integer insertMessage(final Message message, final String username) {
 		return executeTransaction(new Transaction<Integer>() {
 			@Override
 			public Integer execute(Connection conn) throws SQLException {
@@ -465,7 +465,7 @@ public class DerbyDatabase implements IDatabase {
 							"insert into messages (message_text, message_time) " +
 							" values(?, ?)"
 					);
-					stmt.setString(1, message.getText());
+					stmt.setString(1, username + " : " + message.getText());
 					stmt.setString(2, message.getTime());
 					
 					stmt.executeUpdate();
