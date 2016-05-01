@@ -1190,7 +1190,7 @@ public class DerbyDatabase implements IDatabase {
 				
 				try {
 					stmt = conn.prepareStatement(
-							"select messages.*, rooms.* " +
+							"select messages.message_text " +
 							"  from messages, rooms, message_user_room " +
 							"  where messages.message_id = message_user_room.message_id " +
 							"    and rooms.room_id     = message_user_room.room_id "   +
@@ -1229,21 +1229,23 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
-	public User findUserByID(final int id) {
-		return executeTransaction(new Transaction<User>() {
+	public List<Pair<Message,User>> findMessageByUser() {
+		return executeTransaction(new Transaction<List<Pair<Message,User>>>() {
 			@Override
-			public User execute(Connection conn) throws SQLException {
+			public List<Pair<Message, User>> execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
 				ResultSet resultSet = null;
-				User user = null;
 				
 				try {
 					stmt = conn.prepareStatement(
-							"select users.* " +
-							"  from users " +
-							"  where users.id = ? "
+							"select messages.message_text " +
+							"  from messages, users, message_user_room " +
+							"  where messages.message_id = message_user_room.message_id " +
+							"    and users.id     = message_user_room.user_id "   +
+							"  order by messages.message_text asc"
 					);
-					stmt.setInt(1, id);
+					
+					List<Pair<Message, User>> result = new ArrayList<Pair<Message,User>>();
 					
 					resultSet = stmt.executeQuery();
 					
@@ -1253,18 +1255,20 @@ public class DerbyDatabase implements IDatabase {
 					while (resultSet.next()) {
 						found = true;
 						
-						user = new User(null, null, null);
-						user.setID(resultSet.getString(1));
-						user.setPassword(resultSet.getString(2));
-						user.setEmail(resultSet.getString(3));
+						Message message = new Message(null);
+						loadMessage(message, resultSet, 1);
+						User user = new User(null, null, null);
+						loadUser(user, resultSet, 4);
+						
+						result.add(new Pair<Message, User>(message, user));
 					}
 					
-					// check if any users were found
+					// check if any messages were found
 					if (!found) {
-						System.out.println("No users were found in the database with that ID");
+						System.out.println("No messages by this User");
 					}
 					
-					return user;
+					return result;
 				} finally {
 					DBUtil.closeQuietly(resultSet);
 					DBUtil.closeQuietly(stmt);
