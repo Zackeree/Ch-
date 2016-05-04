@@ -22,6 +22,10 @@
     <servlet-name>RoomsServlet</servlet-name>
     <servlet-class>servlet.RoomsServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ChangeServlet</servlet-name>
+    <servlet-class>servlet.ChangeServlet</servlet-class>
+  </servlet>
 
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -39,6 +43,10 @@
   <servlet-mapping>
     <servlet-name>RoomsServlet</servlet-name>
     <url-pattern>/rooms</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ChangeServlet</servlet-name>
+    <url-pattern>/change</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>
