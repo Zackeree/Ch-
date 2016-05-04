@@ -48,4 +48,45 @@ public class DerbyDatabaseTest {
 		assertTrue(message.getText().contains("No this is Patrick."));
 	}
 	
+	@Test
+	public void testUserAlreadyExists() {
+		int temp = db.userAlreadyExists("zhenry");
+		assertEquals(1, temp);
+		temp = db.userAlreadyExists("test");
+		assertEquals(1, temp);
+		temp = db.userAlreadyExists("blonge");
+		assertEquals(1, temp);
+		temp = db.userAlreadyExists("ff");
+		assertEquals(0, temp);
+	}
+
+	@Test
+	public void testFindMessageByID() {
+		
+	}
+
+	@Test
+	public void testFindMessageByUser() {
+		
+	}
+
+	@Test
+	public void testFindMessageByRoom() {
+		
+	}
+
+	@Test
+	public void testFindAllUsers() {
+		
+	}
+
+	@Test
+	public void testInsertUser() {
+		
+	}
+
+	@Test
+	public void testInsertMessage() {
+		
+	}
 }

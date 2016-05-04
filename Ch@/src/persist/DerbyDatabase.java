@@ -515,7 +515,7 @@ public class DerbyDatabase implements IDatabase {
 					resultSet1 = stmt1.executeQuery();
 
 					
-					// if username was found, throw an error message					
+					// if username was found, return 1					
 					if (resultSet1.next())
 					{
 						check = 1;  				
