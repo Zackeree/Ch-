@@ -35,16 +35,8 @@
 		
 		<div id="Content">
 		<h2><center>
-		Make changes to your account:
+		End your current session:
 		</center></h2>
-		</div>
-		
-		<div id="Content">
-			<center><a href="change">
-			<button class="button button1">
-			<h2>Change Password</h2>
-			</button>
-			</a></center>
 		</div>
 		
 		<div id="Content">
